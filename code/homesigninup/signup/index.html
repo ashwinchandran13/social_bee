@@ -31,14 +31,14 @@
           <div class="top-row">
             <div class="field-wrap">
               <label>
-                First Name<span class="req">*</span>
+                First Name<span class="req" >*</span>
               </label>
-              <input type="text" required autocomplete="off" />
+              <input type="text"required autocomplete="off" name="fname" />
             </div>
         
             <div class="field-wrap">
               <label>
-                Last Name<span class="req">*</span>
+                Last Name<span class="req" name="lname">*</span>
               </label>
               <input type="text"required autocomplete="off"/>
             </div>
@@ -48,30 +48,39 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              User Name<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" name="email" />
           </div>
 
           <div class="field-wrap">
             <label>
+              Phone No.<span class="req">*</span>
+            </label>
+            <input type="integer"required autocomplete="off" name="pno" />
+          </div>
+          
+          <div class="field-wrap">
+            <label>
              Community Name<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" name="cname" />
+          </div>
+          <div id="slink">
+          		<a href="#">Community is not listed?..Create one!</a>
           </div>
 
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off" name="pswd" />
           </div>
           
+           <div class="field-wrap">
+            <label>
+              Retype Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off" name="repswd" />
+          </div>
           <button type="submit" class="button button-block"/>Get Started</button>
           
           </form>
@@ -87,14 +96,14 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" name="email" />
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off" name="pswd" />
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
@@ -114,7 +123,7 @@
 
     <script  src="js/index.js"></script>
 
-
+    <script type="text/javascript"></script>
 
 
 </body>

@@ -8,7 +8,7 @@ html {
 
 
 body {
-  background: #c1bdba;
+   background-image: url("../../images/hex.png");
   font-family: 'Titillium Web', sans-serif;
 }
 
@@ -22,7 +22,7 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: rgba(53, 69, 75, 0.9);
   padding: 40px;
   max-width: 600px;
   margin: 40px auto;
@@ -65,6 +65,7 @@ a:hover {
 .tab-content > div:last-child {
   display: none;
 }
+
 
 h1 {
   text-align: center;
@@ -130,7 +131,9 @@ textarea {
   position: relative;
   margin-bottom: 40px;
 }
-
+.slink{
+  padding: 0px 0px 0px 0px;
+}
 .top-row:after {
   content: "";
   display: table;
