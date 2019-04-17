@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" >
-
+  <?php
+  echo $_SERVER['DOCUMENT_ROOT'];
+  include $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
+  // $result = getAllRegisteredUsers();
+  // if ($result->num_rows > 0) {
+  //   // output data of each row
+  //   while($row = $result->fetch_assoc()) {
+  //       echo "user_name: " . $row["user_name"] ."<br>";
+  //   }
+  // } else {
+  //   echo "0 results";
+  // }
+  ?>
 <head>
   <meta charset="UTF-8">
   <title>Sign-Up/Login Form</title>
