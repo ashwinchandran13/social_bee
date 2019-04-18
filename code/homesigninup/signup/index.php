@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" >
   <?php
-  echo $_SERVER['DOCUMENT_ROOT'];
   include $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
   // $result = getAllRegisteredUsers();
-  // if ($result->num_rows > 0) {
-  //   // output data of each row
-  //   while($row = $result->fetch_assoc()) {
-  //       echo "user_name: " . $row["user_name"] ."<br>";
-  //   }
-  // } else {
-  //   echo "0 results";
-  // }
-  ?>
+  // // while($row=mysql_fetch_array($result))
+  // // { 
+  // //    echo "DATA: ".$row['user_name'];
+  // // }
+  // // include $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
+  // $sql = "SELECT `name` FROM tbl_organization_type";
+  // $conn = OpenCon();
+  //   $result = $conn->query($sql);
+  //   CloseCon($conn);
+  //                      //$result = executeQuery("SELECT `name` FROM tbl_organization_type");
+  //                      if ($result->num_rows > 0) {
+                        // while($row = $result->fetch_assoc())
+                        // { 
+                        //    echo $row['user_name']."<br>";
+                        // }
+                    //   }
+                    //   else {
+                    //     echo "0 results";
+                    // }
+                        // ?>
+   ?>
 <head>
   <meta charset="UTF-8">
   <title>Sign-Up/Login Form</title>
@@ -96,6 +107,15 @@
                     <div class="field-wrap">
                       <select required name="ctype" >
                         <option selected="selected">Select your community type</option>
+                        <?php
+                           $result = getOrganizationType();
+
+                       while($row = $result->fetch_assoc())
+                        { 
+                           echo "<option>".$row['name']."</option>";
+                        }
+                     
+                         ?>
                         <!-- to be inserted from db -->
                       </select>
                       </div>
