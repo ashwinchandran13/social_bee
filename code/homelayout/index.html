@@ -44,67 +44,117 @@
   <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 
       <link rel="stylesheet" href="css/style.css">
+		<!-- Ashwin: Sidebar nav group dependencies -->
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
   </head>
   <body>
-	<!-- Ashwin: Sidebar nav body -->
+	   <!-- Ashwin: Sidebar nav body -->
 	<div id="wrapper">
-        <div class="overlay"></div>
-    
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                       Bootstrap 3
-                    </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span>
-            <span class="hamb-middle"></span>
-            <span class="hamb-bottom"></span>
-          </button>
-            
-       
-
+			<div class="overlay"></div>
+		
+			<!-- Sidebar -->
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+				<ul class="nav sidebar-nav">
+					<li class="sidebar-brand">
+						<a href="#">
+						   Bootstrap 3
+						</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+					</li>
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
+					  <ul class="dropdown-menu" role="menu">
+						<li class="dropdown-header">Dropdown heading</li>
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li><a href="#">Separated link</a></li>
+						<li><a href="#">One more separated link</a></li>
+					  </ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- /#sidebar-wrapper -->
+	
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+			  <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+				<span class="hamb-top"></span>
+				<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+			  </button>
+				
+		   
+	
+	  <!-- Ashwin: Sidebar group nav body -->
+	  <nav id="sidebar">
+			<ul class="dots">
+			  <li>
+				<a href="#">
+				  <span class="glyphicon glyphicon-user"><mark>23</mark></span>
+				</a>  
+			  </li>
+			  <li>
+				<a href="#">
+				<span class="glyphicon glyphicon-envelope"><mark class="big swing">7</mark></span>
+				</a>  
+			  </li>
+			  <li>
+				<a href="#">
+				<span class="glyphicon glyphicon-time"><mark class="rubberBand">99</mark></span>
+				</a>
+			  </li>
+			  <li>
+				<a href="#">
+				<span class="glyphicon glyphicon-list-alt"></span>
+				</a>
+			  </li>    
+			  <li>
+				<a href="#">
+				<span class="glyphicon glyphicon-calendar"><mark class="green wobble">99+</mark></span>
+				</a>
+			  </li>      
+			  <li>
+				<a href="#">
+				<span class="glyphicon glyphicon-random"><mark class="blue tada">13</mark></span>
+				</a>
+				</li>        
+			</ul> 
+		  </nav>
+		  <!-- <main>
+			<h1>Hello world!</h1>
+			<p>Move cursor over icon on the left to animate marks</p>
+			<ul>
+			  <li>To change mark color use following class's: <code>.green, .blue</code></li>
+			  <li>Marks are prepare to handle with two-digit numbers from <code>0 to 99</code>. If your number is greater than 99 use logic to display <code>99+</code>.</li>
+			</ul>
+		   <meter value="2" min="0" max="10">2 out of 10</meter><br>
+			<meter value="0.6">60%</meter>   
+		  </main> -->
+	
+	 
 <!-- Ashwin: post body -->
 	    <!-- ==============================================
 	    Hero
