@@ -15,5 +15,22 @@ function OpenCon()
  return $conn;
  }
  
+ function executeQuery($sql,$params){
+    $conn = OpenCon();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+return $stmt->fetchAll();
+ }
 
+ function executeProcedure($sql,$params){
+   try{
+     $conn = OpenCon();
+     $stmt = $conn->prepare($sql);
+           $stmt->execute($params);
+     $conn =null;
+   }
+  catch(PDOException $e){
+   echo $sql . "<br>" . $e->getMessage();
+  }
+  }
 ?>

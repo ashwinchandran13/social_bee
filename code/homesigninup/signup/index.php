@@ -10,8 +10,24 @@
 
 <body>
 <?php
-$registration =  $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
+$root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
+$includes = $root.'includes/';
+$registration = $includes.'registration.php';
+// $homepage = $root.'homelayout/index.html';
+$login = $includes.'login.php';
     include $registration;
+   // include $homepage;
+
+     include $login;
+
+// function include_all_php($folder){
+//   foreach (glob("{$folder}/*.php") as $filename)
+//   {
+//       include $filename;
+//   }
+
+  // include_all_php($_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/');
+// }
 ?>
   <div class="form">
       
@@ -77,25 +93,25 @@ $registration =  $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registrati
         <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post">
+          <form action="<?php $login ?>" method="post">
           
             <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off" name="email" />
+            <input type="email"required autocomplete="off" name="login_username" />
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name="pswd" />
+            <input type="password"required autocomplete="off" name="login_password" />
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
-          <button class="button button-block"/>Log In</button>
+          <button type="submit" class="button button-block"/>Log In</button>
           
           </form>
 

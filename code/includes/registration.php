@@ -5,7 +5,6 @@
 {
   register();
 } 
-// Class Registration{
   function getAllRegisteredUsers()
   {
      $sql = "SELECT
@@ -42,29 +41,6 @@
  return executeQuery($sql);
   }
     
-  function executeQuery($sql){
-     $conn = OpenCon();
-     $result = $conn->query($sql);
-     CloseCon($conn);
-     if ($result->num_rows > 0) {
-     return $result;
-     }
-     else{
-       echo "0 results";
-     }
-  }
- 
-  function executeProcedure($sql,$params){
-    try{
-      $conn = OpenCon();
-      $stmt = $conn->prepare($sql);
-            $stmt->execute($params);
-      $conn =null;
-    }
-   catch(PDOException $e){
-    echo $sql . "<br>" . $e->getMessage();
-   }
-   }
-// }
+  
 
 ?>
