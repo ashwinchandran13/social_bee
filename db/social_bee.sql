@@ -48,7 +48,7 @@ CREATE TABLE `tbl_comment_history_table` (
 DROP TABLE IF EXISTS `tbl_community`;
 
 CREATE TABLE `tbl_community` (
-  `community_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `community_id` varchar(20) NOT NULL,
   `community_name` varchar(50) NOT NULL,
   `community_description` varchar(1000) NOT NULL,
   `organization_name` varchar(50) NOT NULL,
@@ -61,8 +61,8 @@ CREATE TABLE `tbl_community` (
   KEY `fk_tbl_community_created_by` (`created_by`),
   KEY `fk_tbl_community_updated_by` (`updated_by`),
   KEY `fk_tbl_community_organization_name` (`organization_name`),
-  CONSTRAINT `fk_tbl_community_organization_name` FOREIGN KEY (`organization_name`) REFERENCES `tbl_organization` (`organization_name`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_community_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_community_organization_name` FOREIGN KEY (`organization_name`) REFERENCES `tbl_organization` (`organization_name`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_community_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -174,7 +174,7 @@ CREATE TABLE `tbl_post` (
   `post_parent_id` bigint(20) unsigned DEFAULT NULL,
   `post_type` varchar(20) NOT NULL,
   `post_content` varchar(10000) NOT NULL,
-  `community_id` int(11) unsigned NOT NULL,
+  `community_id` varchar(20) NOT NULL,
   `created_time` timestamp NULL DEFAULT NULL,
   `updated_time` timestamp NULL DEFAULT NULL,
   `created_by` varchar(50) NOT NULL,
