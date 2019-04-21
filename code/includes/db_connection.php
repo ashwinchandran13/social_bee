@@ -1,18 +1,19 @@
 <?php
+
 function OpenCon()
  {
  $dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "root";
  $db = "social_bee";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
- 
+ try {
+ $conn = new PDO("mysql:host=$dbhost;dbname=$db", $dbuser, $dbpass);
+ echo "Connected successfully";
+} catch (PDOException $pe) {
+    die("Could not connect to the database $db :" . $pe->getMessage());
+}
  return $conn;
  }
  
-function CloseCon($conn)
- {
- $conn -> close();
- }
-   
+
 ?>

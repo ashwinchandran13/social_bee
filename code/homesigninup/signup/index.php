@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" >
-  <?php
-  include $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
-  // $result = getAllRegisteredUsers();
-  // // while($row=mysql_fetch_array($result))
-  // // { 
-  // //    echo "DATA: ".$row['user_name'];
-  // // }
-  // // include $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
-  // $sql = "SELECT `name` FROM tbl_organization_type";
-  // $conn = OpenCon();
-  //   $result = $conn->query($sql);
-  //   CloseCon($conn);
-  //                      //$result = executeQuery("SELECT `name` FROM tbl_organization_type");
-  //                      if ($result->num_rows > 0) {
-                        // while($row = $result->fetch_assoc())
-                        // { 
-                        //    echo $row['user_name']."<br>";
-                        // }
-                    //   }
-                    //   else {
-                    //     echo "0 results";
-                    // }
-                        // ?>
-   ?>
 <head>
   <meta charset="UTF-8">
   <title>Sign-Up/Login Form</title>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-  
       <link rel="stylesheet" href="css/style.css">
-
-  
 </head>
 
 <body>
-
+<?php
+$registration =  $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/includes/registration.php';
+    include $registration;
+?>
   <div class="form">
       
       <ul class="tab-group">
@@ -49,7 +24,7 @@
         <div id="signup">   
           <h1>Sign Up for Free</h1>
           
-          <form action="/" method="post">
+          <form action="<?php $registration?>" method="post">
           
           <div class="top-row">
             <div class="field-wrap">
@@ -61,9 +36,9 @@
         
             <div class="field-wrap">
               <label>
-                Last Name<span class="req" name="lname">*</span>
+                Last Name<span class="req" >*</span>
               </label>
-              <input type="text"required autocomplete="off"/>
+              <input type="text"required autocomplete="off" name="lname"/>
             </div>
           </div>
 
@@ -78,67 +53,13 @@
             <label>
               Phone No.<span class="req">*</span>
             </label>
-            <input type="integer"required autocomplete="off" name="pno" />
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-             Community Name<span class="req">*</span>
-            </label>
-            <input type="text"required autocomplete="off" name="cname" />
-          </div>
-           <!-- Trigger/Open The Modal -->
-          <a href="#" id="create">Not listed?..Create a community now!</a>
-
-          <!-- The Modal -->
-          <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-              <div class="modal-header">
-                <span class="close">&times;</span>
-                <h1 class="modal-title">Create your community</h1>
-              </div>
-              <div class="modal-body">
-                <form action="" method="post">
-          
-                  <div class="top-row">
-                    
-                    <div class="field-wrap">
-                      <select required name="ctype" >
-                        <option selected="selected">Select your community type</option>
-                        <?php
-                           $result = getOrganizationType();
-
-                       while($row = $result->fetch_assoc())
-                        { 
-                           echo "<option>".$row['name']."</option>";
-                        }
-                     
-                         ?>
-                        <!-- to be inserted from db -->
-                      </select>
-                      </div>
-                
-                    <div class="field-wrap">
-                      <label>
-                       Community Name<span class="req" name="cname">*</span>
-                      </label>
-                      <input type="text" name="cname" id="cname" list="communityname" />
-                      <!-- db tp be connected -->
-                    </div>
-                  <button type="submit" class="button button-block"/>Submit</button>
-                  
-                  </form>
-              </div>
-            </div>
-          </div>  
+            <input type="integer"required autocomplete="off" name="phone_no" />
           </div>
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name="pswd" />
+            <input type="password"required autocomplete="off" name="password" />
           </div>
           
            <div class="field-wrap">
