@@ -35,13 +35,52 @@ CREATE TABLE `tbl_comment_history_table` (
   KEY `fk_tbl_comment_history_table_post_created_by` (`created_by`),
   KEY `fk_tbl_comment_history_table_post_id_updated_bye` (`updated_by`),
   KEY `fk_tbl_comment_history_table_post_id_comment_parent` (`comment_parent_id`),
-  CONSTRAINT `fk_tbl_comment_history_table_post_id_comment_parent` FOREIGN KEY (`comment_parent_id`) REFERENCES `tbl_comment_history_table` (`comment_id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_comment_history_table_post_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_comment_history_table_post_id` FOREIGN KEY (`post_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_comment_history_table_post_id_comment_parent` FOREIGN KEY (`comment_parent_id`) REFERENCES `tbl_comment_history_table` (`comment_id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_comment_history_table_post_id_updated_bye` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_comment_history_table` */
+
+/*Table structure for table `tbl_community` */
+
+DROP TABLE IF EXISTS `tbl_community`;
+
+CREATE TABLE `tbl_community` (
+  `community_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `community_name` varchar(50) NOT NULL,
+  `community_description` varchar(1000) NOT NULL,
+  `organization_name` varchar(50) NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `community_type` varchar(15) NOT NULL DEFAULT 'DEFAULT',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_time` datetime DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`community_id`),
+  KEY `fk_tbl_community_created_by` (`created_by`),
+  KEY `fk_tbl_community_updated_by` (`updated_by`),
+  KEY `fk_tbl_community_organization_name` (`organization_name`),
+  CONSTRAINT `fk_tbl_community_organization_name` FOREIGN KEY (`organization_name`) REFERENCES `tbl_organization` (`organization_name`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_community_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_community_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_community` */
+
+/*Table structure for table `tbl_community_type` */
+
+DROP TABLE IF EXISTS `tbl_community_type`;
+
+CREATE TABLE `tbl_community_type` (
+  `community_type_name` varchar(15) NOT NULL,
+  `community_type_description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`community_type_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_community_type` */
+
+insert  into `tbl_community_type`(`community_type_name`,`community_type_description`) values ('',NULL);
 
 /*Table structure for table `tbl_like_history` */
 
@@ -56,8 +95,8 @@ CREATE TABLE `tbl_like_history` (
   UNIQUE KEY `UNQ_LIKE_POST` (`like_id`,`post_id`),
   KEY `fk_tbl_like_history_post_id` (`post_id`),
   KEY `fk_tbl_like_history_liked_by` (`liked_by`),
-  CONSTRAINT `fk_tbl_like_history_post_id` FOREIGN KEY (`post_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_tbl_like_history_liked_by` FOREIGN KEY (`liked_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
+  CONSTRAINT `fk_tbl_like_history_liked_by` FOREIGN KEY (`liked_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_like_history_post_id` FOREIGN KEY (`post_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_like_history` */
@@ -69,13 +108,15 @@ DROP TABLE IF EXISTS `tbl_login`;
 CREATE TABLE `tbl_login` (
   `user_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `user_type` varchar(20) NOT NULL,
+  `user_type` varchar(20) NOT NULL DEFAULT 'NORMAL',
   PRIMARY KEY (`user_name`),
   KEY `tbl_login_user_type_fk` (`user_type`),
   CONSTRAINT `tbl_login_user_type_fk` FOREIGN KEY (`user_type`) REFERENCES `tbl_user_type` (`user_type`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_login` */
+
+insert  into `tbl_login`(`user_name`,`password`,`user_type`) values ('admin','admin','ADMIN');
 
 /*Table structure for table `tbl_notification` */
 
@@ -99,7 +140,7 @@ CREATE TABLE `tbl_notification` (
 DROP TABLE IF EXISTS `tbl_organization`;
 
 CREATE TABLE `tbl_organization` (
-  `organization_name` varchar(100) NOT NULL,
+  `organization_name` varchar(50) NOT NULL,
   `email_id` varchar(50) NOT NULL,
   `contact_no` varchar(15) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
@@ -122,6 +163,8 @@ CREATE TABLE `tbl_organization_type` (
 
 /*Data for the table `tbl_organization_type` */
 
+insert  into `tbl_organization_type`(`name`) values ('COLLEGE'),('OFFICE');
+
 /*Table structure for table `tbl_post` */
 
 DROP TABLE IF EXISTS `tbl_post`;
@@ -131,17 +174,20 @@ CREATE TABLE `tbl_post` (
   `post_parent_id` bigint(20) unsigned DEFAULT NULL,
   `post_type` varchar(20) NOT NULL,
   `post_content` varchar(10000) NOT NULL,
+  `community_id` int(11) unsigned NOT NULL,
   `created_time` timestamp NULL DEFAULT NULL,
   `updated_time` timestamp NULL DEFAULT NULL,
   `created_by` varchar(50) NOT NULL,
   `updated_by` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`post_id`),
-  KEY `tbl_post_created_by` (`created_by`),
-  KEY `tbl_post_updated_by` (`updated_by`),
-  KEY `tbl_post_parent_post` (`post_parent_id`),
-  CONSTRAINT `tbl_post_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
-  CONSTRAINT `tbl_post_parent_post` FOREIGN KEY (`post_parent_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE,
-  CONSTRAINT `tbl_post_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
+  KEY `fk_tbl_post_created_by` (`created_by`),
+  KEY `fk_tbl_post_parent_post` (`post_parent_id`),
+  KEY `fk_tbl_post_updated_by` (`updated_by`),
+  KEY `fk_tbl_post_community_id` (`community_id`),
+  CONSTRAINT `fk_tbl_post_community_id` FOREIGN KEY (`community_id`) REFERENCES `tbl_community` (`community_id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_post_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_post_parent_post` FOREIGN KEY (`post_parent_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_post_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_post` */
@@ -154,17 +200,14 @@ CREATE TABLE `tbl_registration` (
   `registration_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `organization_name` varchar(100) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` date DEFAULT NULL,
   `email_id` varchar(50) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `mobile_no` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`registration_id`),
-  KEY `organization_name` (`organization_name`),
-  KEY `tbl_registration_user_name` (`user_name`),
-  CONSTRAINT `tbl_registration_user_name` FOREIGN KEY (`user_name`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
-  CONSTRAINT `tbl_registration_ibfk_1` FOREIGN KEY (`organization_name`) REFERENCES `tbl_organization` (`organization_name`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `tbl_registration_user_name_UNQ` (`user_name`),
+  CONSTRAINT `tbl_registration_user_name` FOREIGN KEY (`user_name`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_registration` */
 
@@ -195,6 +238,52 @@ CREATE TABLE `tbl_user_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_user_type` */
+
+insert  into `tbl_user_type`(`user_type`,`user_type_description`) values ('ADMIN',NULL),('NORMAL',NULL);
+
+/* Procedure structure for procedure `registration` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `registration` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `registration`(IN in_first_name VARCHAR(50),
+IN in_last_name VARCHAR(50),
+IN in_email_id VARCHAR(50),
+IN in_mobile_no VARCHAR(15),
+IN in_user_name VARCHAR(50),
+IN in_password varchar(50))
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+BEGIN
+ROLLBACK;
+RESIGNAL;
+    END;
+START TRANSACTION;
+INSERT INTO tbl_login
+            (user_name,
+             `password`)
+VALUES (in_user_name,
+        in_password);
+INSERT INTO tbl_registration
+            (
+             first_name,
+             last_name,
+             dob,
+             email_id,
+             user_name,
+             mobile_no)
+VALUES (        in_first_name,
+        in_last_name,
+        null,
+        in_email_id,
+        in_user_name,
+        in_mobile_no);
+        COMMIT;
+select in_user_name;
+        
+    END */$$
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
