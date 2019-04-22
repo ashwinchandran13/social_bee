@@ -1,0 +1,64 @@
+.grid
+
+  .nav
+    .nav__container
+      - for (let i = 0; i < 5; i++)
+        .nav__server(data-tooltip="Server")
+
+  .header
+    .header__container
+      .header__server
+        .server__title Server
+      .header__channel
+        .channel__item
+          .channel__group Text channels
+          each val in ["General", "Games", "Away"]
+            .channel__title=val
+        .channel__item
+          .channel__group Voice channels
+          each val in ["General", "Games", "Away"]
+            .channel__title=val
+      .header__profile
+        .profile__badge
+          .profile__avatar
+            .avatar__status
+          .profile__user
+            .user__name Username
+            .user__id 1234
+        .profile__settings
+          - for (let i = 0; i < 3; i++)
+            .profile__setting
+
+  .main
+    .main__container
+      .main__channel
+        .header__title General
+      .main__chat(ref="chat")
+        .main__post(v-for="post in posts")
+          .post__avatar
+          .post__content
+            .post__name Username
+            .post__timestamp 01/01/2019
+            .post__message {{ post }}
+      .main__input
+        .input__container
+          input.input__message(
+            type="text"
+            placeholder="Enter message"
+            v-model="post"
+            @keyup.enter="createPost")
+
+  .footer
+    .footer__container
+      .footer__settings
+        .settings__group
+          - for (let i = 0; i < 3; i++)
+            .group__setting
+        search(:users="['Username', 'Foo', 'Bar', 'Baz']")
+      .footer__friends
+        .friend__category Online
+        .friend
+          .friend__avatar
+            .avatar__status
+          .friend__user
+            .user__name Username
