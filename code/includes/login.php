@@ -1,19 +1,40 @@
 <?php
     //include 'db_connection.php';
-
+    function getBaseUrl() 
+    {
+        // output: /myproject/index.php
+        $currentPath = $_SERVER['PHP_SELF']; 
+    
+        // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index ) 
+        $pathInfo = pathinfo($currentPath); 
+    
+        // output: localhost
+        $hostName = $_SERVER['HTTP_HOST']; 
+    
+        // output: http://
+        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
+    
+        // return: http://localhost/myproject/
+        return $protocol.'://'.$hostName;
+    }
 if(isset($_POST['login_username']))
 {
     $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
-    $homepage = $root."homelayout/index.html";
+    $base = getBaseUrl();
+    $homepage = 'Location:'.$base.'/social_bee/code/homelayout/index.html';
 
       $log = new Login();
    $data = $log -> validate($_POST['login_username'],$_POST['login_password']);
    if(sizeof($data)>0){
-    header("Location: ".$homepage);
+    header($homepage);
+     //echo 'URL: '.$homepage.'<br>';
+    // echo $_SERVER['SERVER_NAME'];
    }
    else{
        echo 'Login failed for user: '.$_POST['login_username'];
    }
+
+
 } 
 
 
