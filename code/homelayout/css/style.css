@@ -168,7 +168,7 @@ html {
   border: none;
   display: block;
   height: 32px;
-  margin-left: 15px;
+  margin-left: 30px;
   position: fixed;
   top: 20px;
   width: 32px;
@@ -329,6 +329,7 @@ nav#sidebar {
   position: fixed;
   width: 100px;
   height: 100%;
+  padding-top: 70px;
 }
 ul.dots * {
   /* disable border-box from bootstrap */
@@ -1143,3 +1144,75 @@ nav .right .imgProfil a{
     opacity: 0;
   }
 }
+
+/* Ashwin: Post box css */
+
+/* section {
+  float: right;
+  width: 90%;
+} */
+ .post-box {
+  width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  z-index: 3;
+  position: relative;
+}
+
+.post-box text img {
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+.post-box text textarea {
+  width: 400px;
+  height: 150px;
+  border: none;
+  padding: 5px 10px;
+  font-family: arial;
+  resize: none;
+  outline: none;
+  border-bottom: 2px solid #0077CC;
+}
+textarea::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
+}
+textarea::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+  border-radius: 2px
+}
+.post-box text [type = submit] {
+  float: right;
+  margin: 15px 10px auto auto;
+  border: none;
+  background-color: #0077CC;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+.overlay {
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  display: none;
+}
+.post {
+  background-color: #fff;
+  width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  color: #333;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  border-radius: 3px;
+} 
