@@ -4250,13 +4250,14 @@ nav ul a span.badge {
     left: 100%;
   }
 }
-
+/* Ashwin: Title bar prop */
 nav {
-  color: #fff;
-  background-color: #ee6e73;
+  color: rgba(238, 255, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 56px;
   line-height: 56px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 nav.nav-extended {
@@ -4276,15 +4277,15 @@ nav.nav-extended .nav-content {
 nav a {
   color: #fff;
 }
-
-nav i,
+/* Ashwin: Affects sidebar nav */
+/* nav i,
 nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
   display: block;
   font-size: 24px;
   height: 56px;
   line-height: 56px;
-}
+} */
 
 nav .nav-wrapper {
   position: relative;
@@ -4330,6 +4331,7 @@ nav .brand-logo.center {
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
+
   nav .brand-logo.left, nav .brand-logo.right {
     padding: 0;
     -webkit-transform: none;
@@ -4409,7 +4411,7 @@ nav ul.left {
 nav form {
   height: 100%;
 }
-
+/* Ashwin: Nav input field layer pos */
 nav .input-field {
   margin: 0;
   height: 100%;
@@ -4443,9 +4445,11 @@ nav .input-field label.active i {
   color: #fff;
 }
 
+/* Ashwin : Major scroll prob */
 .navbar-fixed {
-  position: relative;
-  height: 56px;
+  position: fixed;
+  height: 60px;
+  font-family: 'Open Sans', sans-serif;
   z-index: 997;
 }
 
@@ -6534,7 +6538,17 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-
+.notification-tab {
+  padding: 10px 25px;
+  height: 5px;
+}
+/* Vineeth to change h4 font*/
+.notification-tab h4{
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    /* padding: 20px 0px 0px; */
+}
 .input-field input[type=search]:focus:not(.browser-default) {
   background-color: #fff;
   border: 0;

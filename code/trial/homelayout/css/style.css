@@ -938,10 +938,12 @@ nav .right .imgProfil a{
   */
 }
 /* Ashwin: each tabs in notif  */
-.dropdown-container .dropdown .notification-group {
+.dropdown{
+  height: 20px;
+}.dropdown-container .dropdown .notification-group {
   border-bottom: 1px solid #e3e3e3;/*Ashwin :Border lines b/w each type of notif( a line) */
   overflow: hidden;
-   min-height: 20px;/* Ashwin: Size of tabs in notif */
+   min-height: 65px;/* Ashwin: Size of tabs in notif */
 }
 .dropdown-container .dropdown .notification-group:last-child {
   border-bottom: 0;
@@ -1034,13 +1036,13 @@ nav .right .imgProfil a{
   border-radius: 15px;
 }
 
- /* .right {
+ .right {
   float: right;
 }
 
 .left {
   float: left;
-}  */
+} 
 
 
 @media only screen and (max-width: 321px) {

@@ -7,12 +7,14 @@
 body {
   position: relative;
   overflow-x: hidden;
+  
 }
 body,
 html {
   height: 100%;
   background-color: #583e7e;
 }
+
 .nav .open > a {
   background-color: transparent;
 }
@@ -124,7 +126,7 @@ html {
   width: 100%;
 }
 .sidebar-nav li a {
-  color: #dddddd;
+  color: #ffffff;
   display: block;
   padding: 10px 15px 10px 30px;
   text-decoration: none;
@@ -285,7 +287,7 @@ html {
   z-index: 1;
 }
 /* SOME DEMO STYLES - NOT REQUIRED */
-body,
+/* body,
 html {
   background-color: #583e7e;
 }
@@ -305,7 +307,7 @@ body a {
 }
 body a:hover {
   color: #fff;
-}
+} */
 
 /* Ashwin: Sidebar nav group css */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
@@ -829,8 +831,8 @@ code {
   --terciary:#B2EBF2;
 }
 
-nav{
-  padding: 0 10px 0 10px;
+nav .dropdown-props {
+  padding: 0 100px 0 10px;
   background-color: var(--primary);
 }
 
@@ -856,7 +858,7 @@ nav .right{
 }
 
 
-nav .right img{
+/* nav .right img{
   margin: 17px;
   height: 30px;
   width: 30px;
@@ -866,9 +868,278 @@ nav .right img{
 
 nav .right .imgProfil a{
   height: 64px;
-}
+} */
 
 .hidden{
   display: none;
 }
 
+/* Ashwin: Dropdown css */
+
+.inner-navigation li {
+  list-style-type: none;
+}
+/* Ashwin: Notif button props */
+.inner-navigation li .menu-link {
+  color: #ff5252;
+  line-height: 3.7em;
+  padding: 30px 30px;
+  text-decoration: none;
+  transition: background .5s, color .5s;
+}
+
+.dropdown-container {
+  overflow-y: hidden;
+  padding-right: 60px;
+}
+.dropdown-container.expanded .dropdown {
+  -webkit-animation: fadein .5s;
+  -moz-animation: fadein .5s;
+  -ms-animation: fadein .5s;
+  -o-animation: fadein .5s;
+  animation: fadein .5s;
+  display: block;
+}
+.dropdown-container .dropdown {
+  -webkit-animation: fadeout .5s;
+  -moz-animation: fadeout .5s;
+  -ms-animation: fadeout .5s;
+  -o-animation: fadeout .5s;
+  animation: fadeout .5s;
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: auto;
+  max-height: 600px;
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.8);
+  margin-top: 3px;
+  margin-right: -15px;
+  border-top: 4px solid #ff5252;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  -webkit-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.75);
+  /*
+  &:before{
+    position: absolute;
+    content: ' ';
+    width: 0; 
+    height: 0; 
+    top: -13px;
+    right: 7px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid $secondary-color; 
+  }
+  */
+}
+/* Ashwin: each tabs in notif  */
+.dropdown{
+  height: 20px;
+}.dropdown-container .dropdown .notification-group {
+  border-bottom: 1px solid #e3e3e3;/*Ashwin :Border lines b/w each type of notif( a line) */
+  overflow: hidden;
+   min-height: 65px;/* Ashwin: Size of tabs in notif */
+}
+.dropdown-container .dropdown .notification-group:last-child {
+  border-bottom: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.dropdown-container .dropdown .notification-group .notification-tab {
+  padding: 0px 25px;
+  min-height: 65px;
+}
+/* Ashwin: Dropdown tabs on hover change color to */
+.dropdown-container .dropdown .notification-group .notification-tab:hover {
+  cursor: pointer;
+  background: #3f51b5;
+}
+/* Ashwin: notif tab content color on hover */
+.dropdown-container .dropdown .notification-group .notification-tab:hover .fa, .dropdown-container .dropdown .notification-group .notification-tab:hover h4, .dropdown-container .dropdown .notification-group .notification-tab:hover .label {
+  color: #FFF;
+  display: inline-block;
+}
+/* Ashwin: Notif nos with circle props on tab   */
+.dropdown-container .dropdown .notification-group .notification-tab:hover .label {
+  background: #ff5252;
+  border-color: #ff5252;
+}
+
+
+.dropdown-container .dropdown .notification-group .notification-list {
+  padding: 0;
+  overflow-y: auto;
+  height: 0px;
+  max-height: 250px;
+  transition: height .5s;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item {
+  padding: 5px 25px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item .message {
+  margin: 5px 5px 10px;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item .item-footer a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item .item-footer .date {
+  float: right;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item:nth-of-type(odd) {
+  background: rgba(90, 90, 90, 0.4);
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item:hover {
+  cursor: pointer;
+}
+.dropdown-container .dropdown .notification-group .notification-list .notification-list-item:last-child {
+  border-bottom: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.dropdown-container .dropdown .notification-group.expanded .notification-tab {
+  background: #3f51b5;
+}
+.dropdown-container .dropdown .notification-group.expanded .notification-tab .fa, .dropdown-container .dropdown .notification-group.expanded .notification-tab h4, .dropdown-container .dropdown .notification-group.expanded .notification-tab .label {
+  color: rgb(0, 0, 0);
+  display: inline-block;
+}
+.dropdown-container .dropdown .notification-group.expanded .notification-tab .label {
+  background: #ff5252;
+  border-color: #ff5252;
+}
+.dropdown-container .dropdown .notification-group.expanded .notification-list {
+  height: 250px;
+  max-height: 250px;
+  transition: height .5s;
+}
+.dropdown-container .dropdown .notification-group .fa, .dropdown-container .dropdown .notification-group h4, .dropdown-container .dropdown .notification-group .label {
+  color: #333;
+  display: inline-block;
+}
+.dropdown-container .dropdown .notification-group .fa {
+  margin-right: 5px;
+  margin-top: 25px;
+}
+.dropdown-container .dropdown .notification-group .label {
+  float: right;
+  margin-top: 20px;
+  color: #3f51b5;
+  border: 1px solid #3f51b5;
+  padding: 0px 7px;
+  border-radius: 15px;
+}
+
+ .right {
+  float: right;
+}
+
+.left {
+  float: left;
+} 
+
+
+@media only screen and (max-width: 321px) {
+  .dropdown-container .dropdown .notification-group .notification-tab h4 {
+    display: none;
+  }
+  .dropdown-container .dropdown .notification-group .notification-tab:hover h4 {
+    display: none;
+  }
+  .dropdown-container .dropdown .notification-group.expanded .notification-tab h4 {
+    display: none;
+  }
+}
+@media only screen and (max-width: 514px) {
+  .dropdown-container .dropdown {
+    width: 100%;
+    margin: 0px;
+    left: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-ms-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-o-keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
