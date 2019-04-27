@@ -1,0 +1,10 @@
+1. CSS fix for sidebar navigation
+2. group create
+	generate link and save
+3. create post
+4. joining group
+4. Show post based on group click
+5. show notifications
+6. calendar
+7. chat
+8. floating notification
