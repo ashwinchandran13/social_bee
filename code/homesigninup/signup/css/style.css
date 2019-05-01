@@ -124,7 +124,7 @@ a:hover {
 
 .modal-header {
   padding: 2px 16px;
-  background-image: url("../images/hex.png")
+  background-image: url("../images/hex.png");
   color: rgba(160, 179, 176, 0.25);
 }
 

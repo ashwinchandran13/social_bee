@@ -884,7 +884,6 @@ nav .right .imgProfil a{
 .inner-navigation li .menu-link {
   color: #ff5252;
   line-height: 3.7em;
-  padding: 30px 30px;
   text-decoration: none;
   transition: background .5s, color .5s;
 }

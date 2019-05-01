@@ -1,3 +1,7 @@
+<?php
+namespace HtmlGenerator;
+
+?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -9,15 +13,23 @@
 </head>
 
 <body>
-
 <?php
+
 $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
 $includes = $root.'includes/';
 $registration = $includes.'registration.php';
 $login = $includes.'login.php';
-    include $registration;
-     include $login;
+$htmlCreator = $includes.'HtmlTag.php';
+$markup = $includes.'Markup.php';
+
+    require $registration;
+     require $login;
+          require $markup;
+
+     //require $htmlCreator;
+     //echo(HtmlTag::createElement('p')->text('some content'));
 ?>
+
   <div class="form">
       
       <ul class="tab-group">
@@ -106,9 +118,9 @@ $login = $includes.'login.php';
 
         </div>
         
-      </div><!-- tab-content -->
+      </div><!-- tab-content
       
-</div> 
+</div>  -->
 
 
 </body>
