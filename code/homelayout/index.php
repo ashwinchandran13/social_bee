@@ -1,3 +1,16 @@
+<?php
+namespace HtmlGenerator;
+$root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
+$includes = $root.'includes/';
+$htmlCreator = $includes.'HtmlTag.php';
+$markup = $includes.'Markup.php';
+$postCreator = $includes.'PostCreator.php';
+// require $markup;
+// require $htmlCreator;
+require $postCreator;
+$postCreator = new PostCreator();
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -409,9 +422,11 @@
 										</button>
 										<div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu"
 											style="position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-											<a class="dropdown-item" href="#">Hide post</a>
-											<a class="dropdown-item" href="#">Stop following</a>
-											<a class="dropdown-item" href="#">Report</a>
+											<?php
+											$menuItems= array("Hide post","Stop following","Report");
+											$menuIds = array("hidePost","stopFollowing","report");
+											$postCreator->addDropDown($menuItems,$menuIds);
+											?>
 										</div>
 									</div>
 									<!--/ dropdown -->
@@ -432,53 +447,17 @@
 								<div class="cardbox-item">
 									<img class="img-fluid" src="assets/img/1.jpg" alt="Image">
 								</div>
-								<!--/ cardbox-item -->
-								<div class="cardbox-base">
-									<ul class="float-right">
-										<li><a><i class="fa fa-comments"></i></a></li>
-										<li><a><em class="mr-5">12</em></a></li>
-										<li><a><i class="fa fa-share-alt"></i></a></li>
-										<li><a><em class="mr-3">03</em></a></li>
-									</ul>
-									<ul>
-										<li><a><i class="fa fa-thumbs-up"></i></a></li>
-										<li><a href="#"><img src="assets/img/users/3.jpeg" class="img-fluid rounded-circle" alt="User"></a>
-										</li>
-										<li><a href="#"><img src="assets/img/users/1.jpg" class="img-fluid rounded-circle" alt="User"></a>
-										</li>
-										<li><a href="#"><img src="assets/img/users/5.jpg" class="img-fluid rounded-circle" alt="User"></a>
-										</li>
-										<li><a href="#"><img src="assets/img/users/2.jpg" class="img-fluid rounded-circle" alt="User"></a>
-										</li>
-										<li><a><span>242 Likes</span></a></li>
-									</ul>
-								</div>
-								<!--/ cardbox-base -->
-								<div class="cardbox-comments">
-									<span class="comment-avatar float-left">
-										<a href=""><img class="rounded-circle" src="assets/img/users/6.jpg" alt="..."></a>
-									</span>
-									<div class="search">
-										<input placeholder="Write a comment" type="text">
-										<button><i class="fa fa-camera"></i></button>
-									</div>
-									<!--/. Search -->
-								</div>
+								<?php
+										$postCreator->createCardboxBase();
+										$postCreator->createComments('Write a comment');
+								?>
 								<!--/ cardbox-like -->
 
 							</div>
 							<!--/ cardbox -->
 
 						</div>
-						<!--/ col-lg-6 -->
-						<div class="col-lg-3">
-							<div class="shadow-lg p-4 mb-2 bg-white author">
-								<a href="">Created by The Masha Brand</a>
-								<p>Bootstrap 4.1.0</p>
-							</div>
-						</div>
-						<!--/ col-lg-3 -->
-
+					
 					</div>
 					<!--/ row -->
 				</div>

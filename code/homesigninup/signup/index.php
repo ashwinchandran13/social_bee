@@ -21,13 +21,14 @@ $registration = $includes.'registration.php';
 $login = $includes.'login.php';
 $htmlCreator = $includes.'HtmlTag.php';
 $markup = $includes.'Markup.php';
-
+// $postCreator = $includes.'PostCreator.php';
     require $registration;
      require $login;
           require $markup;
 
-     //require $htmlCreator;
-     //echo(HtmlTag::createElement('p')->text('some content'));
+     require $htmlCreator;
+    //  require $postCreator;
+    //  echo(HtmlTag::createElement('p')->text('some content'));
 ?>
 
   <div class="form">
@@ -118,9 +119,10 @@ $markup = $includes.'Markup.php';
 
         </div>
         
-      </div><!-- tab-content
+      </div>
+</div>
       
-</div>  -->
+
 
 
 </body>

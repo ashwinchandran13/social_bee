@@ -21,7 +21,7 @@ if(isset($_POST['login_username']))
 {
     $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
     $base = getBaseUrl();
-    $homepage = 'Location:'.$base.'/social_bee/code/homelayout/index.html';
+    $homepage = 'Location:'.$base.'/social_bee/code/homelayout/index.php';
 
       $log = new Login();
    $data = $log -> validate($_POST['login_username'],$_POST['login_password']);
