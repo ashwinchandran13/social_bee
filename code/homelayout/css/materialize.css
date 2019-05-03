@@ -2661,11 +2661,7 @@ a {
 }
 
 /* 24dp elevation */
-.z-depth-5, .modal {
-  -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-}
-
+/* s
 .hoverable {
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
@@ -5687,14 +5683,16 @@ button.btn-floating {
   position: fixed;
   left: 0;
   right: 0;
-  background-color: #fafafa;
-  padding: 0;
-  max-height: 70%;
-  width: 55%;
+  padding-top: 15%;
+  padding-left: 220px;
+  max-height: 100%;
+  width: 100%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 @media only screen and (max-width: 992px) {

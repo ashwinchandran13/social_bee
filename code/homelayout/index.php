@@ -56,7 +56,7 @@ $postCreator = new PostCreator();
 	<!--Ashwin: Sidebar nav dependencies -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='css/bootstrap.min.css'>
 
 	<link rel="stylesheet" href="css/style.css">
 	<!-- Ashwin: Sidebar nav group dependencies -->
@@ -66,6 +66,8 @@ $postCreator = new PostCreator();
 	<link rel='stylesheet' href='css/materialize.css'>
 	<link rel='stylesheet'
 		href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css'>
+
+		
 
 </head>
 
@@ -367,17 +369,46 @@ $postCreator = new PostCreator();
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<span class="glyphicon glyphicon-calendar"><mark class="green wobble">99+</mark></span>
-						</a>
+					<br>
+					<br>
+					<br>
 					</li>
 					<li>
+					<!-- Ashwin: Permanent button for join and create a group-->
 						<a href="#">
-							<span class="glyphicon glyphicon-random"><mark class="blue tada">13</mark></span>
+							<!-- Trigger/Open The Modal -->
+							<div id="myBtn">
+							<span class="glyphicon glyphicon-plus"></span></div>
 						</a>
+					<!-- Ends here -->
 					</li>
 				</ul>
 			</nav>
+		<!-- The Modal -->
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+	<span class="close">&times;</span>
+	<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Join</a></li>
+  <li><a data-toggle="tab" href="#menu1">Create</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>Join a Group</h3>
+    <p> form</p>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Create A Group</h3>
+    <p>form</p>
+  </div>
+</div>
+
+</div>
+
+</div>
 			<!-- <main>
 			<h1>Hello world!</h1>
 			<p>Move cursor over icon on the left to animate marks</p>
