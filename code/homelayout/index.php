@@ -409,92 +409,18 @@ $postCreator = new PostCreator();
 </div>
 
 </div>
-			<!-- <main>
-			<h1>Hello world!</h1>
-			<p>Move cursor over icon on the left to animate marks</p>
-			<ul>
-			  <li>To change mark color use following class's: <code>.green, .blue</code></li>
-			  <li>Marks are prepare to handle with two-digit numbers from <code>0 to 99</code>. If your number is greater than 99 use logic to display <code>99+</code>.</li>
-			</ul>
-		   <meter value="2" min="0" max="10">2 out of 10</meter><br>
-			<meter value="0.6">60%</meter>   
-			</main> -->
 
-			<!-- post box -->
-			<!-- <div class="post-box">
-			<div class="text">
-				<img src="http://placehold.it/100/100"/>
-				<textarea placeholder="What's in your mind"></textarea>
-				<input type="submit" value="post"/>
-			</div>
-		</div>
-		<div class="overlay"></div>
-		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script> -->
-			<!-- Post box ends -->
-
-			<!-- Ashwin: post body -->
-			<!-- ==============================================
-	    Hero
-	    =============================================== -->
-			<section class="hero">
-
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 offset-lg-3">
-
-							<div class="cardbox shadow-lg bg-white">
-
-								<div class="cardbox-heading">
-									<!-- START dropdown-->
-									<div class="dropdown float-right">
-										<button class="btn btn-flat btn-flat-icon" type="button" data-toggle="dropdown"
-											aria-expanded="false">
-											<em class="fa fa-ellipsis-h"></em>
-										</button>
-										<div class="dropdown-menu dropdown-scale dropdown-menu-right" role="menu"
-											style="position: absolute; transform: translate3d(-136px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-											<?php
-											$menuItems= array("Hide post","Stop following","Report");
-											$menuIds = array("hidePost","stopFollowing","report");
-											$postCreator->addDropDown($menuItems,$menuIds);
-											?>
-										</div>
-									</div>
-									<!--/ dropdown -->
-									<div class="media m-0">
-										<div class="d-flex mr-3">
-											<a href=""><img class="img-fluid rounded-circle" src="assets/img/users/4.jpg" alt="User"></a>
-										</div>
-										<div class="media-body">
-											<p class="m-0">Benjamin Robinson</p>
-											<small><span><i class="icon ion-md-pin"></i> Nairobi, Kenya</span></small>
-											<small><span><i class="icon ion-md-time"></i> 10 hours ago</span></small>
-										</div>
-									</div>
-									<!--/ media -->
-								</div>
-								<!--/ cardbox-heading -->
-
-								<div class="cardbox-item">
-									<img class="img-fluid" src="assets/img/1.jpg" alt="Image">
-								</div>
-								<?php
-										$postCreator->createCardboxBase();
-										$postCreator->createComments('Write a comment');
-								?>
-								<!--/ cardbox-like -->
-
-							</div>
-							<!--/ cardbox -->
-
-						</div>
-					
-					</div>
-					<!--/ row -->
-				</div>
-				<!--/ container -->
-			</section>
-
+							<?php
+							      $menuItems= array("hidePost"=>"Hide post","stopFollowing"=>"Stop following","report"=>"Report");
+										$posted_by = "Ashwin";
+										$posted_location = "Trivandrum, Kerala";
+										$posted_time ="10 hours ago";
+										$posted_by_dp="assets/img/users/4.jpg";
+										$post_image="assets/img/1.jpg";
+										$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_image);
+										$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_image);
+										$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,"assets/img/users/4.jpg");
+							?>
 
 			<!-- ==============================================
 		Scripts
