@@ -1227,10 +1227,11 @@ textarea::-webkit-scrollbar-thumb {
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
-  float: right;
+  color: #fff !important;
+  float: right !important;
   font-size: 28px;
   font-weight: bold;
+  padding-bottom: 20px;
 }
 
 .close:hover,
@@ -1242,6 +1243,21 @@ textarea::-webkit-scrollbar-thumb {
 
 /* Ashwin: Group inviite/create css */
 
-.group-join {
-  bottom: 3px;
+.fsSubmitButton 
+{
+padding: 10px 15px 11px !important;
+font-size: 18px !important;
+background-color: #57d6c7 !important ;
+font-weight: bold !important;
+text-shadow: 1px 1px #57D6C7 !important;
+color: #ffffff !important;
+border-radius: 5px !important;
+-moz-border-radius: 5px !important;
+-webkit-border-radius: 5px !important;
+border: 1px solid #57D6C7 !important;
+cursor: pointer !important;
+box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
+-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
 }
+

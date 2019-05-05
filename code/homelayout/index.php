@@ -67,8 +67,8 @@ $postCreator = new PostCreator();
 	<link rel='stylesheet'
 		href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.css'>
 
+		<!-- Semantic UI for drop downs -->
 		
-
 </head>
 
 <body>
@@ -399,16 +399,31 @@ $postCreator = new PostCreator();
   <div id="home" class="tab-pane fade in active">
     <h3>Join a Group</h3>
 		<form action="" method="">
-			<label class="group-join">
-         First Name<span class="req" >*</span>
+			<label>
+         Invite Link<span class="req" >*</span>
       </label>
-      <input type="text"required autocomplete="off" name="fname" />
+			<input type="text"required autocomplete="off" name="invite-link" />
+			<input type="submit" value="Join" name="join-group" class="fsSubmitButton">
 
 		</form>
   </div>
   <div id="menu1" class="tab-pane fade">
-    <h3>Create A Group</h3>
-    <p>form</p>
+		<h3>Create a Group</h3>
+		
+		<form action="" method="post">
+			<label>
+				Group Name<span class="req" >*</span>
+			</label>
+			<input type="text"required autocomplete="off" name="group-name" />
+			<label>
+				Group Type<span class="req" >*</span>
+			</label>
+		
+				<!-- Ashwin : Select not working -->
+
+
+		</form>
+
   </div>
 </div>
 
