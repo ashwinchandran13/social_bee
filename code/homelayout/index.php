@@ -398,7 +398,13 @@ $postCreator = new PostCreator();
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
     <h3>Join a Group</h3>
-    <p> form</p>
+		<form action="" method="">
+			<label class="group-join">
+         First Name<span class="req" >*</span>
+      </label>
+      <input type="text"required autocomplete="off" name="fname" />
+
+		</form>
   </div>
   <div id="menu1" class="tab-pane fade">
     <h3>Create A Group</h3>
