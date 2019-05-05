@@ -4520,6 +4520,7 @@ h3 {
   font-size: 2.92rem;
   line-height: 110%;
   margin: 1.9466666667rem 0 1.168rem 0;
+  color: #fff !important;
 }
 
 h4 {
@@ -5702,7 +5703,7 @@ button.btn-floating {
 }
 
 .modal h1, .modal h2, .modal h3, .modal h4 {
-  margin-top: 0;
+  margin-top: 20px;
 }
 
 .modal .modal-content {
@@ -6059,7 +6060,7 @@ textarea.materialize-textarea {
   height: 3rem;
   width: 100%;
   font-size: 16px;
-  margin: 0 0 8px 0;
+  margin: 0 0 20px 0;
   padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
