@@ -8,7 +8,7 @@ namespace HtmlGenerator;
 // require $htmlCreator;
 // require 'db_connection.php';
 // $community = new Community();
-// $community->createCommunityType();
+// $community->createCommunityNaviagtion('vineethrvin@gmail.com');
 
 Class Community{
     function getCommunityId($limit)
@@ -29,7 +29,15 @@ Class Community{
    ) ";
    executeProcedure($sql,$params);
     }
+function getCommunityDetails($user_name){
+  $params = array(':user_name' => $user_name);
 
+      $sql = "SELECT  com.community_id, com.community_name, com.community_type, com.created_time, role.user_type
+      FROM tbl_community com, tbl_user_role role
+      WHERE role.user_name=:user_name AND
+      role.community_id = com.community_id";
+  return executeQuery($sql,$params);
+}
     function getCommunityType(){
       $sql = "SELECT `community_type_name` FROM tbl_community_type";
   return executeQuery($sql);
@@ -42,8 +50,8 @@ function createCommunityType(){
   }
   echo $select;
 }
-function createListItemForCommunityNav($parent,$href,$span_class,$num_to_display){
-  $parent->addElement('li')
+function createListItemForCommunityNav($community_id,$community_name,$parent,$href,$span_class,$num_to_display){
+  $parent->addElement('li')->set('id',$community_id)->set('name',$community_name)
   ->addElement('a')->set('href',$href)
   ->addElement('span')->set('class',$span_class)
   ->addElement('mark')->text($num_to_display);
@@ -54,53 +62,24 @@ function createListItemForCommunityNavWithDiv($parent,$href,$span_class,$div_id)
   ->addElement('div')->set('id',$div_id)
   ->addElement('span')->set('class',$span_class);
 }
-function createCommunityNaviagtion(){
+function createCommunityNaviagtion($user_name){
   $main_nav = HtmlTag::createElement('nav')->set('id','sidebar');
 $nav_ul = $main_nav->addElement('ul')->set('class','dots');
+$community_details = $this->getCommunityDetails($user_name);
+echo("values ".count($community_details));
+foreach($community_details as $community){
 $href="#";
 $span_class ="glyphicon glyphicon-user";
 $num_to_display ="21";
-$this->createListItemForCommunityNav($nav_ul,$href,$span_class,$num_to_display);
+$community_name = $community['community_name'];
+$community_id = $community['community_id'];
+
+$this->createListItemForCommunityNav($community_id,$community_name,$nav_ul,$href,$span_class,$num_to_display);
+}
 $this->createListItemForCommunityNavWithDiv($nav_ul,"#","glyphicon glyphicon-plus","myBtn");
+
 echo $main_nav;
-//   <nav id="sidebar">
-//   <ul class="dots">
-//     <li>
-//       <a href="#">
-//         <span class="glyphicon glyphicon-user"><mark>23</mark></span>
-//       </a>
-//     </li>
-//     <li>
-//       <a href="#">
-//         <span class="glyphicon glyphicon-envelope"><mark class="big swing">7</mark></span>
-//       </a>
-//     </li>
-//     <li>
-//       <a href="#">
-//         <span class="glyphicon glyphicon-time"><mark class="rubberBand">99</mark></span>
-//       </a>
-//     </li>
-//     <li>
-//       <a href="#">
-//         <span class="glyphicon glyphicon-list-alt"></span>
-//       </a>
-//     </li>
-//     <li>
-//     <br>
-//     <br>
-//     <br>
-//     </li>
-//     <li>
-//     <!-- Ashwin: Permanent button for join and create a group-->
-//       <a href="#">
-//         <!-- Trigger/Open The Modal -->
-//         <div id="myBtn">
-//         <span class="glyphicon glyphicon-plus"></span></div>
-//       </a>
-//     <!-- Ends here -->
-//     </li>
-//   </ul>
-// </nav>
+return $community_details;
 }
 }
 ?>

@@ -362,7 +362,7 @@ $created_by = $user_name;
 			</button>
 
 <?php
-$com->createCommunityNaviagtion();
+$com->createCommunityNaviagtion($user_name);
 ?>
 
 		<!-- The Modal -->
