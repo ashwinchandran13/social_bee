@@ -5,11 +5,28 @@ $includes = $root.'includes/';
 $htmlCreator = $includes.'HtmlTag.php';
 $markup = $includes.'Markup.php';
 $postCreator = $includes.'PostCreator.php';
+$community = $includes.'Community.php';
+$dbConnection = $includes.'db_connection.php';
 // require $markup;
 // require $htmlCreator;
 require $postCreator;
+require $community;
+require $dbConnection;
 $postCreator = new PostCreator();
+$com = new Community();
+//TODO: read from the login and use
+$user_name = 'vineethrvin@gmail.com';
+$group_id_length = 20;
+if(isset($_POST['group_name']))
+{
+	$group_name = $_POST['group_name'];
+	$group_description = $_POST['group_description'];
+	$group_type = $_POST['group_type'];
+$group_id = $_POST['group_id'];
+$created_by = $user_name;
+	$com->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
 
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -289,7 +306,7 @@ $postCreator = new PostCreator();
 
 	<!-- Ashwin: Sidebar nav body -->
 	<div id="wrapper">
-		<div class="overlay"></div>
+		<!-- <div class="overlay"></div> -->
 
 		<!-- Sidebar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
@@ -344,46 +361,10 @@ $postCreator = new PostCreator();
 				<span class="hamb-bottom"></span>
 			</button>
 
+<?php
+$com->createCommunityNaviagtion();
+?>
 
-			<!-- Ashwin: Sidebar group nav body -->
-			<nav id="sidebar">
-				<ul class="dots">
-					<li>
-						<a href="#">
-							<span class="glyphicon glyphicon-user"><mark>23</mark></span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="glyphicon glyphicon-envelope"><mark class="big swing">7</mark></span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="glyphicon glyphicon-time"><mark class="rubberBand">99</mark></span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="glyphicon glyphicon-list-alt"></span>
-						</a>
-					</li>
-					<li>
-					<br>
-					<br>
-					<br>
-					</li>
-					<li>
-					<!-- Ashwin: Permanent button for join and create a group-->
-						<a href="#">
-							<!-- Trigger/Open The Modal -->
-							<div id="myBtn">
-							<span class="glyphicon glyphicon-plus"></span></div>
-						</a>
-					<!-- Ends here -->
-					</li>
-				</ul>
-			</nav>
 		<!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -407,20 +388,32 @@ $postCreator = new PostCreator();
 
 		</form>
   </div>
-  <div id="menu1" class="tab-pane fade">
+  <div id="menu1" class="tab-pane fade in">
 		<h3>Create a Group</h3>
 		
 		<form action="" method="post">
+		<label>
+				Group Id<span class="req" >*</span>
+			</label>
+			<input type="text"required autocomplete="off" name="group_id" value="<?php echo $com->getCommunityId($group_id_length)?>" readonly/>
 			<label>
 				Group Name<span class="req" >*</span>
 			</label>
-			<input type="text"required autocomplete="off" name="group-name" />
+			<input type="text"required autocomplete="off" name="group_name" />
 			<label>
 				Group Type<span class="req" >*</span>
 			</label>
-		
-				<!-- Ashwin : Select not working -->
-
+			<br><br>
+		<?php
+					$com->createCommunityType();
+		?>
+		<br><br><br>
+		<label>
+				Group Description<span class="req" >*</span>
+			</label>
+			<br><br>
+		<textarea placeholder="Enter Description" name="group_description"></textarea>
+		<input type="submit" value="Submit" name="btn_create_group" class="fsSubmitButton">
 
 		</form>
 
