@@ -51,7 +51,6 @@ CREATE TABLE `tbl_community` (
   `community_id` varchar(20) NOT NULL,
   `community_name` varchar(50) NOT NULL,
   `community_description` varchar(1000) NOT NULL,
-  `organization_name` varchar(50) NOT NULL,
   `created_by` varchar(50) NOT NULL,
   `community_type` varchar(15) NOT NULL DEFAULT 'DEFAULT',
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -60,13 +59,13 @@ CREATE TABLE `tbl_community` (
   PRIMARY KEY (`community_id`),
   KEY `fk_tbl_community_created_by` (`created_by`),
   KEY `fk_tbl_community_updated_by` (`updated_by`),
-  KEY `fk_tbl_community_organization_name` (`organization_name`),
   CONSTRAINT `fk_tbl_community_created_by` FOREIGN KEY (`created_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_tbl_community_organization_name` FOREIGN KEY (`organization_name`) REFERENCES `tbl_organization` (`organization_name`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tbl_community_updated_by` FOREIGN KEY (`updated_by`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_community` */
+
+insert  into `tbl_community`(`community_id`,`community_name`,`community_description`,`created_by`,`community_type`,`created_time`,`updated_time`,`updated_by`) values ('79vwko88diwwkkgkc4k0','vvvv1','ldrljehrkjehrkhwr','vineethrvin@gmail.com','GAMING','2019-05-12 00:54:51',NULL,NULL),('c3s4zjlesvsw4kwkoccw','vin','fhkjfhs','vineethrvin@gmail.com','ENTERTAINMENT','2019-05-11 20:59:22',NULL,NULL);
 
 /*Table structure for table `tbl_community_type` */
 
@@ -80,7 +79,7 @@ CREATE TABLE `tbl_community_type` (
 
 /*Data for the table `tbl_community_type` */
 
-insert  into `tbl_community_type`(`community_type_name`,`community_type_description`) values ('',NULL);
+insert  into `tbl_community_type`(`community_type_name`,`community_type_description`) values ('ENTERTAINMENT',NULL),('GAMING',NULL),('OTHERS',NULL);
 
 /*Table structure for table `tbl_like_history` */
 
@@ -116,7 +115,7 @@ CREATE TABLE `tbl_login` (
 
 /*Data for the table `tbl_login` */
 
-insert  into `tbl_login`(`user_name`,`password`,`user_type`) values ('admin','admin','ADMIN');
+insert  into `tbl_login`(`user_name`,`password`,`user_type`) values ('admin','admin','ADMIN'),('ddas@gmail.com','f','NORMAL'),('vineethrvin@gmail.com','vin@123','NORMAL');
 
 /*Table structure for table `tbl_notification` */
 
@@ -207,9 +206,11 @@ CREATE TABLE `tbl_registration` (
   PRIMARY KEY (`registration_id`),
   UNIQUE KEY `tbl_registration_user_name_UNQ` (`user_name`),
   CONSTRAINT `tbl_registration_user_name` FOREIGN KEY (`user_name`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_registration` */
+
+insert  into `tbl_registration`(`registration_id`,`first_name`,`last_name`,`dob`,`email_id`,`user_name`,`mobile_no`) values (8,'Vineeth','Reghu',NULL,'vineethrvin@gmail.com','vineethrvin@gmail.com','7708300158'),(9,'BCD','sd',NULL,'ddas@gmail.com','ddas@gmail.com','dfdf');
 
 /*Table structure for table `tbl_subscribe` */
 
@@ -217,15 +218,40 @@ DROP TABLE IF EXISTS `tbl_subscribe`;
 
 CREATE TABLE `tbl_subscribe` (
   `subscription_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `post_id` bigint(20) unsigned NOT NULL,
+  `community_id` varchar(20) NOT NULL,
   `user_name` varchar(50) NOT NULL,
+  `user_type` varchar(20) NOT NULL,
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`subscription_id`),
-  KEY `fk_tbl_subscribe_post_id` (`post_id`),
-  CONSTRAINT `fk_tbl_subscribe_post_id` FOREIGN KEY (`post_id`) REFERENCES `tbl_post` (`post_id`) ON UPDATE CASCADE
+  UNIQUE KEY `UNQ_user_community` (`community_id`,`user_name`),
+  KEY `fk_tbl_subscribe_user_type` (`user_type`),
+  CONSTRAINT `fk_tbl_subscribe_user_type` FOREIGN KEY (`user_type`) REFERENCES `tbl_user_type` (`user_type`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_tbl_subscribe_community_id` FOREIGN KEY (`community_id`) REFERENCES `tbl_community` (`community_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_subscribe` */
+
+/*Table structure for table `tbl_user_role` */
+
+DROP TABLE IF EXISTS `tbl_user_role`;
+
+CREATE TABLE `tbl_user_role` (
+  `role_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) NOT NULL,
+  `community_id` varchar(20) NOT NULL,
+  `user_type` varchar(20) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `UNQ_USER_COMMUNITY` (`user_name`,`community_id`),
+  KEY `tbl_user_role_community_id` (`community_id`),
+  KEY `tbl_user_role_user_type` (`user_type`),
+  CONSTRAINT `tbl_user_role_user_name` FOREIGN KEY (`user_name`) REFERENCES `tbl_login` (`user_name`) ON UPDATE CASCADE,
+  CONSTRAINT `tbl_user_role_community_id` FOREIGN KEY (`community_id`) REFERENCES `tbl_community` (`community_id`) ON UPDATE CASCADE,
+  CONSTRAINT `tbl_user_role_user_type` FOREIGN KEY (`user_type`) REFERENCES `tbl_user_type` (`user_type`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbl_user_role` */
+
+insert  into `tbl_user_role`(`role_id`,`user_name`,`community_id`,`user_type`) values (1,'vineethrvin@gmail.com','c3s4zjlesvsw4kwkoccw','COMMUNITY_OWNER'),(2,'vineethrvin@gmail.com','79vwko88diwwkkgkc4k0','COMMUNITY_OWNER');
 
 /*Table structure for table `tbl_user_type` */
 
@@ -239,7 +265,49 @@ CREATE TABLE `tbl_user_type` (
 
 /*Data for the table `tbl_user_type` */
 
-insert  into `tbl_user_type`(`user_type`,`user_type_description`) values ('ADMIN',NULL),('NORMAL',NULL);
+insert  into `tbl_user_type`(`user_type`,`user_type_description`) values ('ADMIN',NULL),('COMMUNITY_ADMIN','can make changes in community'),('COMMUNITY_OWNER','owns the community can delete the community too and has all privilege of community admin'),('NORMAL',NULL);
+
+/* Procedure structure for procedure `community_creation` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `community_creation` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `community_creation`(IN in_community_id varchar(20),
+        in_community_name VARCHAR(50),
+        in_community_description varchar(1000) ,
+        in_created_by varchar(50),
+        in_community_type varchar(15))
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+BEGIN
+ROLLBACK;
+RESIGNAL;
+    END;
+START TRANSACTION;
+INSERT INTO tbl_community
+            (community_id,
+             community_name,
+             community_description,
+              created_by,
+             community_type)
+VALUES (in_community_id,
+        in_community_name,
+        in_community_description,
+        in_created_by,
+        in_community_type);
+INSERT INTO tbl_user_role
+            (
+             user_name,
+             community_id,
+             user_type)
+VALUES (
+        in_created_by,
+        in_community_id,
+        'COMMUNITY_OWNER');
+        COMMIT;
+    END */$$
+DELIMITER ;
 
 /* Procedure structure for procedure `registration` */
 
