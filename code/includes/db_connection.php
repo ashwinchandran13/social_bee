@@ -1,5 +1,5 @@
 <?php
-
+// namespace HTMLGenerator;
 function OpenCon()
  {
  $dbhost = "localhost";
@@ -8,17 +8,21 @@ function OpenCon()
  $db = "social_bee";
  try {
  $conn = new PDO("mysql:host=$dbhost;dbname=$db", $dbuser, $dbpass);
- echo "Connected successfully";
+//  echo "Connected successfully";
 } catch (PDOException $pe) {
     die("Could not connect to the database $db :" . $pe->getMessage());
 }
  return $conn;
  }
  
- function executeQuery($sql,$params){
+ function executeQuery($sql,$params=null){
     $conn = OpenCon();
     $stmt = $conn->prepare($sql);
-    $stmt->execute($params);
+    if($params == null){
+      $stmt->execute();
+    }else{
+      $stmt->execute($params);
+    }
 return $stmt->fetchAll();
  }
 
