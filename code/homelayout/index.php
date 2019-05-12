@@ -419,7 +419,10 @@ $postCreator = new PostCreator();
 				Group Type<span class="req" >*</span>
 			</label>
 		
-				<!-- Ashwin : Select not working -->
+				<select name="" id="">
+					<option value="">flag1</option>
+					<option value="">flag2</option>
+				</select>
 
 
 		</form>
