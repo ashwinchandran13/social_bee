@@ -10,18 +10,43 @@ require $htmlCreator;
 // $postCreator = new PostCreator();
 // $menuItems= array("Hide post","Stop following","Report");
 // $menuIds = array("hidePost","stopFollowing","report");
-//  $postCreator->addDropDown($menuItems,$menuIds);
+// //  $postCreator->addDropDown($menuItems,$menuIds);
+// require 'db_connection.php';
 // $menuItems= array("hidePost"=>"Hide post","stopFollowing"=>"Stop following","report"=>"Report");
 // $posted_by = "Ashwin";
 // $posted_location = "Trivandrum, Kerala";
 // $posted_time ="10 hours ago";
 // $posted_by_dp="assets/img/users/4.jpg";
 // $post_image="assets/img/1.jpg";
-// $postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_image);
+// echo($postCreator->getPostDetails('79vwko88diwwkkgkc4k0'));
 
 Class PostCreator{
+/**DB interaction code */
+function getPostDetails($groupid){
+   $params = array(':groupid' => $groupid);
 
+      $sql = "SELECT
+      post.post_id,
+      post.post_parent_id,
+      post.post_type,
+      post.post_content,
+      post.community_id,
+      post.post_image,
+      (SELECT COUNT(*) FROM tbl_like_history WHERE post_id = post.post_id) AS like_count,
+        (SELECT COUNT(*) FROM tbl_comment_history WHERE post_id = post.post_id) AS comment_count,
+      post.created_time,
+      post.updated_time,
+      reg.first_name,
+      reg.last_name,
+      post.created_by,
+      post.updated_by
+    FROM tbl_post post, tbl_registration reg
+    WHERE post.community_id=:groupid AND
+    reg.user_name = post.created_by";
+  return executeQuery($sql,$params);
+}
 
+   /**HTML creation code */
    function createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_image){
       $post_main = HtmlTag::createElement('section')->set('class','hero');
      $cardbox_shadow = $post_main->addElement('div')->set('class','row')

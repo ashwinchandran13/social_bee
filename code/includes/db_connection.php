@@ -4,7 +4,7 @@ function OpenCon()
  {
  $dbhost = "localhost";
  $dbuser = "root";
- $dbpass = "moonga";
+ $dbpass = "root";
  $db = "social_bee";
  try {
  $conn = new PDO("mysql:host=$dbhost;dbname=$db", $dbuser, $dbpass);
