@@ -386,6 +386,15 @@ $created_by = $user_name;
 <?php
 $com->createCommunityNaviagtion($user_name);
 ?>
+<!-- Ashwin: Post box -->
+<div class="post_box">
+      <div class="p-box">
+        <img src="http://placehold.it/100/100"/>
+        <textarea placeholder="What's in your mind"></textarea>
+        <input type="submit" value="post"/>
+      </div>
+</div>
+    <div class="o-shadow"></div>
 
 		<!-- The Modal -->
 <div id="myModal" class="modal">

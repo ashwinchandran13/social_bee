@@ -1261,10 +1261,11 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
 -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
 }
 
+/* Ashwin: Post box css*/
+
 .post_box {
-  padding-left: 160px;
+  padding-left: 200px;
   width: 90% ;
-  padding-top: 40px;
 }
 
  .p-box{
@@ -1284,7 +1285,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset !important;
   width: 60px !important ;
   height: 60px !important;
 }
-.p-box textarea {
+section div textarea {
   width: 400px !important;
   height: 150px !important;
   border: none !important;
@@ -1301,8 +1302,8 @@ textarea::-webkit-scrollbar {
 textarea::-webkit-scrollbar-thumb {
   background-color: #CCC !important;
   border-radius: 2px !important;
-  
- div .p-box [type = submit] {
+}
+section div [type = submit] {
   float: right !important;
   margin: 15px 10px auto auto !important;
   border: none !important;
@@ -1313,8 +1314,7 @@ textarea::-webkit-scrollbar-thumb {
   border-radius: 3px !important;
   font-size: 16px !important;
 }
-
-.o-shadow {
+.overlay {
   background-color: rgba(0,0,0,.5) !important;
   position: absolute !important;
   top: 0 !important;
@@ -1332,11 +1332,4 @@ textarea::-webkit-scrollbar-thumb {
   color: #333 !important;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3) !important;
   border-radius: 3px !important;
-} 
-
-
-.box-btn{
-  background-color: #03A9F4 !important;
-  padding-left: 100px;
-
-}
+} */
