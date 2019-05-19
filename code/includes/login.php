@@ -17,21 +17,25 @@
         // return: http://localhost/myproject/
         return $protocol.'://'.$hostName;
     }
+    
 if(isset($_POST['login_username']))
 {
+    session_start();
+    $login_username = $_POST['login_username'];
+    $_SESSION['login_username'] = $login_username;
     $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
     $base = getBaseUrl();
     $homepage = 'Location:'.$base.'/social_bee/code/homelayout/index.php';
 
       $log = new Login();
-   $data = $log -> validate($_POST['login_username'],$_POST['login_password']);
+   $data = $log -> validate($login_username,$_POST['login_password']);
    if(sizeof($data)>0){
     header($homepage);
      //echo 'URL: '.$homepage.'<br>';
     // echo $_SERVER['SERVER_NAME'];
    }
    else{
-       echo 'Login failed for user: '.$_POST['login_username'];
+       echo 'Login failed for user: '.$login_username;
    }
 
 
