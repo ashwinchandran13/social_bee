@@ -51,6 +51,7 @@ function addScript(){
    <html>
    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
       <script src="js/jquery.js"></script>
       <script src="js/index.js"></script>
       <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -209,22 +210,22 @@ function createSideNav(){
       <ul class="nav sidebar-nav">
          <li class="sidebar-brand">
             <a href="#">
-               Bootstrap 3
+               Community Name
             </a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#"><i class="fa fa-fw fa-home"></i> Home group</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
+            <a href="#"><i class="fa fa-fw fa-folder"></i> Online Members</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
+            <a href="#"><i class="fa fa-fw fa-file-o"></i> Offline Members</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+            <a href="#"><i class="fa fa-fw fa-cog"></i> Managers</a>
          </li>
-         <li class="dropdown">
+         <li class="Group Messages">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span
                   class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -237,13 +238,13 @@ function createSideNav(){
             </ul>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+            <a href="#"><i class="fa fa-fw fa-bank"></i> Community Calender</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
+            <a href="#"><i class="fa fa-fw fa-dropbox"></i> Community Albums</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
+            <a href="#"><i class="fa fa-fw fa-twitter"></i> About Community</a>
          </li>
       </ul>
    </nav>
@@ -260,14 +261,14 @@ function createSideNav(){
 function createNavBar(){
    echo '<body><div class="navbar-fixed">
 		<nav>
-			<div class="nav-wrapper">
+         <div class="nav-wrapper">
 				<form action="" method="post">
 					<div class="input-field">
 						<input id="search" type="search" name="search">
 						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
 						<i class="material-icons">close</i>
 					</div>
-				</form>
+            </form>
 				<!-- Ashwin: Dropdown begins -->
 				<ul class="inner-navigation">
 					<li class="right">
@@ -538,4 +539,20 @@ $this->createCommentCount($base_div);
       // </div>
      }
 }
+
+// Check here
+// function showcalendar(){
+//    echo '
+// <!-- Ashwin: Calendar -->
+// <!-- The Modal -->
+// <div id="myModal" class="modal">
+
+// <!-- Modal content -->
+// <div class="modal-content">
+// 	<span class="close">&times;</span>
+//    <div id="calendar"></div>
+
+// </div>'
+// }
+
 ?>

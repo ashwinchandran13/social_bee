@@ -20,7 +20,7 @@
     
 if(isset($_POST['login_username']))
 {
-    // session_start();
+    session_start();
     $login_username = $_POST['login_username'];
     $_SESSION['login_username'] = $login_username;
     $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
