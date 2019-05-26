@@ -343,7 +343,7 @@ function createNavBar($user_name){
 								<li class="notification-group">
 									<div class="notification-tab">
 										<!-- <i class="fa fa-flag"></i> -->
-										<h4>'.$user_name.'<h4>
+										<h4>Notifications<h4>
 										<span class="label">4</span>
 									</div>
 									<!-- tab -->

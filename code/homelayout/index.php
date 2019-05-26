@@ -55,8 +55,6 @@ if(isset($_SESSION['login_username'])){
 	 $group_id_tmp = '79vwko88diwwkkgkc4k0';
 	 if(isset($_POST['post_image'])){
 		$post_image = $_POST['post_image'];
-		$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content,$post_image);
-		
 		$postCreator->addPostToDb($post_content,$post_image,$group_id,$user_name);
 	}else{
 		$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content);
