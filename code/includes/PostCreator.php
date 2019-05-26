@@ -47,8 +47,7 @@ function getPostDetails($groupid){
 }
 
 function addScript(){
-   echo '<!DOCTYPE html>
-   <html>
+   echo '
    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
@@ -59,7 +58,10 @@ function addScript(){
             <script src="assets/js/bootstrap.min.js"></script>';
 }
 function addHead(){
-   echo '<head>
+   echo '
+   <!DOCTYPE html>
+   <html>
+   <head>
 	<!-- Ashwin:Post Dependencies -->
 	<!-- ==============================================
 		Title and Meta Tags
@@ -319,8 +321,10 @@ function createNavBar(){
 									</ul>
 								</li>
 								<li class="notification-group">
-									<div class="notification-tab">
-										<h4>Sign out</h4>
+                           <div class="notification-tab" id="signout">
+                          
+                              <h4>Sign out</h4>
+                          
 										<span class="label">2/8</span>
 									</div> 
 								</li>

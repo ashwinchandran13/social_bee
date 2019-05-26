@@ -1,3 +1,8 @@
+<?php
+if(isset($_SESSION['login_username'])){
+session_destroy();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

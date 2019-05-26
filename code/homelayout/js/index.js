@@ -62,7 +62,20 @@ $(document).on('click', '#dropdownOverlay', function(e){
     $('.dropdown-container.expanded').removeClass('expanded');
   }
 })
+$("#signout").on('click', function(){
+  var base_url = window.location.origin;
+  // "http://stackoverflow.com"
+  
+  var host = window.location.host;
+  // stackoverflow.com
+  
+  var pathArray = window.location.pathname.split( '/' );
+  var redirct_url = base_url+"/"+pathArray[1]+"/"+pathArray[2]+'/homesigninup/index.php'
+  console.log(redirct_url);
+  window.location.replace(redirct_url);
 
+  
+});
 //Dropdown collapsile tabs
 $('.notification-tab').click(function(e){
   if($(e.currentTarget).parent().hasClass('expanded')){
@@ -124,6 +137,8 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
   }
 }
+
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {

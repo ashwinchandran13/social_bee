@@ -28,12 +28,13 @@ if(isset($_SESSION['login_username'])){
 	$posted_by_dp="assets/img/users/4.jpg";
 	$post_image="assets/img/1.jpg";
 	//$user_name = 'vineethrvin@gmail.com';
-	$postCreator->addScript();
 	$postCreator->addHead();
 	$postCreator->createNavBar();
 	$postCreator->createSideNav();
 	$com->createCommunityNaviagtion($user_name);
+	$postCreator->createGroupWindow();
 	$postCreator->createPostBox();
+
 	if(isset($_POST['group_name']))
 	{
 		$group_name = $_POST['group_name'];
@@ -58,9 +59,13 @@ if(isset($_SESSION['login_username'])){
 	//echo $post_content;
 	} 
 	$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,"This is to test how it looks with longer text, Hope it word wraps and looks good in the given space else I am screwed",$post_image);
+	$postCreator->addScript();
 	$postCreator->addClosure();
 }else{
 	echo "<html><body><h1>You must be logged in to see this page user</h1><body></html>";
 }
 
+function logout(){
+	session_destroy();
+}
 ?>
