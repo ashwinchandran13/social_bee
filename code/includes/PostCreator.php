@@ -225,18 +225,17 @@ function createSideNav(){
          <li>
             <a href="#"><i class="fa fa-fw fa-cog"></i> Managers</a>
          </li>
-         <li class="Group Messages">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span
-                  class="caret"></span></a>
+         <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>Dropdown</li>
             <ul class="dropdown-menu" role="menu">
-               <li class="dropdown-header">Dropdown heading</li>
-               <li><a href="#">Action</a></li>
-               <li><a href="#">Another action</a></li>
-               <li><a href="#">Something else here</a></li>
-               <li><a href="#">Separated link</a></li>
-               <li><a href="#">One more separated link</a></li>
+               <li style="color: rgba(137, 142, 146, 0.6);padding-left:30px;" class="dropdown-header" >MEMBERS</li>
+               <li><a href="#">Member1</a></li>
+               <li><a href="#">Member1</a></li>
+               <li><a href="#">Member1</a></li>
+               <li><a href="#">Member1</a></li>
+               <li><a href="#">Member1</a></li>
             </ul>
          </li>
+         
          <li>
             <a href="#"><i class="fa fa-fw fa-bank"></i> Community Calender</a>
          </li>
