@@ -12,10 +12,10 @@ if(isset($_SESSION['login_username'])){
 	// require $markup;
 	// require $htmlCreator;
 	require $postCreator;
-	require $community;
+	// require $community;
 	require $dbConnection;
 	$postCreator = new PostCreator();
-	$com = new Community();
+	// $com = new Community();
 	//TODO: read from the login and use
 	$group_id_length = 20;
 
@@ -31,8 +31,8 @@ if(isset($_SESSION['login_username'])){
 	$postCreator->addHead();
 	$postCreator->createNavBar();
 	$postCreator->createSideNav();
-	$com->createCommunityNaviagtion($user_name);
-	$postCreator->createGroupWindow();
+	$postCreator->createCommunityNaviagtion($user_name);
+	$postCreator->createGroupWindow($group_id_length);
 	$postCreator->createPostBox();
 
 	if(isset($_POST['group_name']))

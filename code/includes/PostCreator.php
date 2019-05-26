@@ -4,8 +4,9 @@ $root = $_SERVER['DOCUMENT_ROOT'].'/social_bee/code/';
 $includes = $root.'includes/';
 $htmlCreator = $includes.'HtmlTag.php';
 $markup = $includes.'Markup.php';
+$community = $includes.'Community.php';
 require $markup;
-
+require $community;
 require $htmlCreator;
 // $postCreator = new PostCreator();
 // $menuItems= array("Hide post","Stop following","Report");
@@ -21,6 +22,7 @@ require $htmlCreator;
 // echo($postCreator->getPostDetails('79vwko88diwwkkgkc4k0'));
 
 Class PostCreator{
+
 /**DB interaction code */
 function getPostDetails($groupid){
    $params = array(':groupid' => $groupid);
@@ -44,6 +46,10 @@ function getPostDetails($groupid){
     WHERE post.community_id=:groupid AND
     reg.user_name = post.created_by";
   return executeQuery($sql,$params);
+}
+function createCommunityNaviagtion($user_name){
+   $com = new Community();
+   $com->createCommunityNaviagtion($user_name);
 }
 
 function addScript(){
@@ -127,7 +133,9 @@ function addClosure(){
 </body>
 </html>';
 }
-function createGroupWindow(){
+function createGroupWindow($group_id_length){
+   $com = new Community();
+  $group_id = $com->getCommunityId($group_id_length);
   echo '<div class="o-shadow"></div>
 
 		<!-- The Modal -->
@@ -160,7 +168,7 @@ function createGroupWindow(){
 		<label>
 				Group Id<span class="req" >*</span>
 			</label>
-			<input type="text"required autocomplete="off" name="group_id" value="<?php echo $com->getCommunityId($group_id_length)?>" readonly/>
+			<input type="text"required autocomplete="off" name="group_id" value="'.$group_id.'" readonly/>
 			<label>
 				Group Name<span class="req" >*</span>
 			</label>
@@ -168,11 +176,11 @@ function createGroupWindow(){
 			<label>
 				Group Type<span class="req" >*</span>
 			</label>
-			<br><br>
-		<?php
+			<br><br>';
+		
 					$com->createCommunityType();
-		?>
-		<br><br><br>
+		
+		echo'<br><br><br>
 		<label>
 				Group Description<span class="req" >*</span>
 			</label>
@@ -339,52 +347,7 @@ function createNavBar(){
 }
 function showCalendar(){
    echo '
-   <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-</style>
-</head>
-<body>
+   
 
 <h2>Modal Example</h2>
 
@@ -403,35 +366,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
   </div>
 
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>';
+</div>';
 }
    /**HTML creation code */
    function createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content,$post_image=null){
