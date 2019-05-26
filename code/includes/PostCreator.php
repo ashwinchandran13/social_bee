@@ -276,7 +276,7 @@ function createNavBar(){
 						<!--span class="notification-label"></span-->
 						<div class="dropdown-container">
 							<a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
-                     <img style="height:55px;width:40px; padding-top:10px;"  src="../images/logo.png" alt="logo">
+                     <img style="height:55px;width:45px; padding-top:10px;"  src="../images/logo.png" alt="logo">
 							</a>
 							<ul class="dropdown" name="notificationMenu">
 								<li class="notification-group">
