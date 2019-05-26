@@ -114,7 +114,7 @@ function addHead(){
 	<link rel="stylesheet" href="css/style.css">
 	<!-- Ashwin: Sidebar nav group dependencies -->
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	
 	<!-- Ashwin: Title bar dependencies -->
 	<link rel="stylesheet" href="css/materialize.css">
 	<link rel="stylesheet"
@@ -204,8 +204,39 @@ function createPostBox(){
          <div class="p-box">
            <img src="http://placehold.it/100/100"/>
            <textarea placeholder="What\'s in your mind" name="post_content"></textarea>
-           <input type="submit" value="post"/>
-               <input type="file" onchange="readURL(this);" name="post_image" />
+           <input style="
+            padding: 2px 15px 5px !important;
+            font-size: 18px !important;
+            background-color: #57d6c7;
+            font-weight: bold;
+            text-shadow: 1px 1px #57D6C7;
+            width: 10%;
+            color: #ffffff;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 1px solid #57D6C7;
+            cursor: pointer;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;"
+            }type="submit" value="post"/>
+               <input style="padding: 10px 15px 15px !important;
+               font-size: 18px !important;
+               background-color: #57d6c7;
+               font-weight: bold;
+               text-shadow: 1px 1px #57D6C7;
+               width: 59%;
+               float: right;
+               color: #ffffff;
+               border-radius: 5px;
+               -moz-border-radius: 5px;
+               -webkit-border-radius: 5px;
+               border: 1px solid #57D6C7;
+               cursor: pointer;
+               box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+               -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+               -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;" type="file" onchange="readURL(this);" name="post_image" />
                <img id="blah" src="#" alt="your image" />
          </div>
             </form>
