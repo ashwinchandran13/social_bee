@@ -19,10 +19,25 @@ require $htmlCreator;
 // $posted_time ="10 hours ago";
 // $posted_by_dp="assets/img/users/4.jpg";
 // $post_image="assets/img/1.jpg";
-// echo($postCreator->getPostDetails('79vwko88diwwkkgkc4k0'));
+// echo $postCreator->addPostToDb('79vwko88diwwkkgkc4k0',"",'79vwko88diwwkkgkc4k0','vineethrvin@gmail.com');
 
 Class PostCreator{
-
+function addPostToDb($post_content,$post_image,$community_id,$created_by){
+   $params = array(':post_content' => $post_content,':community_id' => $community_id,
+   ':created_by' => $created_by);
+echo "post_content: ".$post_content."post_image :".$post_image."community_id: ".$community_id."created_by: ".$created_by;
+   $sql = "INSERT INTO tbl_post
+            (
+             post_type,
+             post_content,
+             community_id,
+             created_by)
+VALUES ('TEXT',
+        :post_content,
+        :community_id,
+        :created_by)";
+        executeProcedure($sql,$params);
+}
 /**DB interaction code */
 function getPostDetails($groupid){
    $params = array(':groupid' => $groupid);
@@ -44,7 +59,8 @@ function getPostDetails($groupid){
       post.updated_by
     FROM tbl_post post, tbl_registration reg
     WHERE post.community_id=:groupid AND
-    reg.user_name = post.created_by";
+    reg.user_name = post.created_by
+    order by post.created_time DESC";
   return executeQuery($sql,$params);
 }
 function createCommunityNaviagtion($user_name){
@@ -204,23 +220,7 @@ function createPostBox(){
          <div class="p-box">
            <img src="http://placehold.it/100/100"/>
            <textarea placeholder="What\'s in your mind" name="post_content"></textarea>
-           <input style="
-            padding: 2px 15px 5px !important;
-            font-size: 18px !important;
-            background-color: #57d6c7;
-            font-weight: bold;
-            text-shadow: 1px 1px #57D6C7;
-            width: 10%;
-            color: #ffffff;
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            border: 1px solid #57D6C7;
-            cursor: pointer;
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;"
-            }type="submit" value="post"/>
+           <input class = "post-btn" type="submit" value="post"/>
                <input style="padding: 10px 15px 15px !important;
                font-size: 18px !important;
                background-color: #57d6c7;
@@ -236,8 +236,8 @@ function createPostBox(){
                cursor: pointer;
                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
                -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-               -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;" type="file" onchange="readURL(this);" name="post_image" />
-               <img id="blah" src="#" alt="your image" />
+               -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;" type="file" onchange="readURL(this);" name="post_image"/>
+               <img id="blah" src="#" alt="your image"   />
          </div>
             </form>
    </div>';
@@ -298,7 +298,7 @@ function createSideNav(){
          <span class="hamb-bottom"></span>
       </button>';
 } 
-function createNavBar(){
+function createNavBar($user_name){
    
    echo '<body><div class="navbar-fixed">
       <nav>
@@ -322,7 +322,7 @@ function createNavBar(){
 								<li class="notification-group">
 									<div class="notification-tab">
 										<!-- <i class="fa fa-flag"></i> -->
-										<h4>Notifications</h4>
+										<h4>'.$user_name.'<h4>
 										<span class="label">4</span>
 									</div>
 									<!-- tab -->

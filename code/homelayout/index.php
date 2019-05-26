@@ -26,10 +26,10 @@ if(isset($_SESSION['login_username'])){
 	$posted_location = "Trivandrum, Kerala";
 	$posted_time ="10 hours ago";
 	$posted_by_dp="assets/img/users/4.jpg";
-	$post_image="assets/img/1.jpg";
+	$post_image1="assets/img/1.jpg";
 	//$user_name = 'vineethrvin@gmail.com';
 	$postCreator->addHead();
-	$postCreator->createNavBar();
+	$postCreator->createNavBar($user_name);
 	$postCreator->createSideNav();
 	$postCreator->createCommunityNaviagtion($user_name);
 	$postCreator->createGroupWindow($group_id_length);
@@ -45,20 +45,30 @@ if(isset($_SESSION['login_username'])){
 		$com->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
 	
 	} 
-	
+	if(isset($_GET['group_id']))
+	{
+		$group_id = $_GET['group_id'];
+	}
 	if(isset($_POST['post_content']))
 	{
 	 $post_content = $_POST['post_content'];
-	 if(isset($_POST['post_images'])){
-		$post_image = $_POST['post_images'];
+	 $group_id_tmp = '79vwko88diwwkkgkc4k0';
+	 if(isset($_POST['post_image'])){
+		$post_image = $_POST['post_image'];
 		$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content,$post_image);
-	 }else{
+		
+		$postCreator->addPostToDb($post_content,$post_image,$group_id,$user_name);
+	}else{
 		$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content);
-	
+		$postCreator->addPostToDb($post_content,null,$group_id,$posted_by);
+
 	}
 	//echo $post_content;
 	} 
-	$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,"This is to test how it looks with longer text, Hope it word wraps and looks good in the given space else I am screwed",$post_image);
+	$postDetails = 	$postCreator->getPostDetails($group_id);
+	foreach($postDetails as $post){
+	$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
+	}
 	$postCreator->addScript();
 	$postCreator->addClosure();
 }else{

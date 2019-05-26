@@ -11,6 +11,24 @@ namespace HtmlGenerator;
 // $community->createCommunityNaviagtion('vineethrvin@gmail.com');
 
 Class Community{
+
+  function getBaseUrl() 
+  {
+      // output: /myproject/index.php
+      $currentPath = $_SERVER['PHP_SELF']; 
+  
+      // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index ) 
+      $pathInfo = pathinfo($currentPath); 
+  
+      // output: localhost
+      $hostName = $_SERVER['HTTP_HOST']; 
+  
+      // output: http://
+      $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
+  
+      // return: http://localhost/myproject/
+      return $protocol.'://'.$hostName;
+  }
     function getCommunityId($limit)
     {
       
@@ -68,11 +86,12 @@ $nav_ul = $main_nav->addElement('ul')->set('class','dots');
 $community_details = $this->getCommunityDetails($user_name);
 echo("values ".count($community_details));
 foreach($community_details as $community){
-$href="#";
 $span_class ="glyphicon glyphicon-user";
 $num_to_display ="21";
 $community_name = $community['community_name'];
 $community_id = $community['community_id'];
+$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id;
+$href=$url;
 
 $this->createListItemForCommunityNav($community_id,$community_name,$nav_ul,$href,$span_class,$num_to_display);
 }
