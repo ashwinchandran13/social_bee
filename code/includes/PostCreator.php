@@ -257,10 +257,11 @@ function createSideNav(){
          <span class="hamb-middle"></span>
          <span class="hamb-bottom"></span>
       </button>';
-}
+} 
 function createNavBar(){
+   
    echo '<body><div class="navbar-fixed">
-		<nav>
+      <nav>
          <div class="nav-wrapper">
 				<form action="" method="post">
 					<div class="input-field">
@@ -275,7 +276,7 @@ function createNavBar(){
 						<!--span class="notification-label"></span-->
 						<div class="dropdown-container">
 							<a href="#" data-dropdown="notificationMenu" class="menu-link has-notifications circle">
-								<i class="fa fa-bell"></i>
+                     <img style="height:55px;width:40px; padding-top:10px;"  src="../images/logo.png" alt="logo">
 							</a>
 							<ul class="dropdown" name="notificationMenu">
 								<li class="notification-group">
