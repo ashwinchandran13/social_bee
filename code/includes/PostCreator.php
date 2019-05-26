@@ -205,38 +205,41 @@ function createPostBox(){
            <img src="http://placehold.it/100/100"/>
            <textarea placeholder="What\'s in your mind" name="post_content"></textarea>
            <input style="
-            padding: 2px 15px 5px !important;
-            font-size: 18px !important;
-            background-color: #57d6c7;
-            font-weight: bold;
-            text-shadow: 1px 1px #57D6C7;
-            width: 10%;
-            color: #ffffff;
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            border: 1px solid #57D6C7;
-            cursor: pointer;
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-            -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;"
-            }type="submit" value="post"/>
-               <input style="padding: 10px 15px 15px !important;
+           padding: 10px 15px 15px !important;
+           font-size: 18px !important;
+           background-image: linear-gradient(to right, #007bff , #110d2d);
+           font-weight: bold;
+           float: right;
+           text-shadow: 1px 1px #212529;
+           width: 20%;
+           color: rgb(255, 255, 255);
+           border-radius: 5px;
+           -moz-border-radius: 5px;
+           -webkit-border-radius: 5px;
+           border: 1px solid #34495e;
+           cursor: pointer;
+           box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+           -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+           -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;"
+            type="submit" value="post"/>
+               <input style="padding: 3.3px 15px 15px !important;
                font-size: 18px !important;
-               background-color: #57d6c7;
+               margin-right: 10px;
+               background-image: linear-gradient(to right, #007bff , #110d2d);
                font-weight: bold;
-               text-shadow: 1px 1px #57D6C7;
-               width: 59%;
                float: right;
-               color: #ffffff;
+               text-shadow: 1px 1px #212529;
+               width: 61%;
+               color: rgb(255, 255, 255);
                border-radius: 5px;
                -moz-border-radius: 5px;
                -webkit-border-radius: 5px;
-               border: 1px solid #57D6C7;
+               border: 1px solid #34495e;
                cursor: pointer;
                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
                -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-               -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;" type="file" onchange="readURL(this);" name="post_image" />
+               -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;"
+                type="file" onchange="readURL(this);" name="post_image" />
                <img id="blah" src="#" alt="your image" />
          </div>
             </form>
@@ -298,10 +301,12 @@ function createSideNav(){
          <span class="hamb-bottom"></span>
       </button>';
 } 
-function createNavBar(){
+function createNavBar($user_name){
    
    echo '<body><div class="navbar-fixed">
+      
       <nav>
+      <label style=" padding: 10px 1150px; top: -3px; position: absolute; " >Welcome <b style="color:white">'.$user_name.'</b><b style="color:yellow">!</b></label>
          <div class="nav-wrapper">
 				<form action="" method="post">
 					<div class="input-field">

@@ -29,7 +29,7 @@ if(isset($_SESSION['login_username'])){
 	$post_image="assets/img/1.jpg";
 	//$user_name = 'vineethrvin@gmail.com';
 	$postCreator->addHead();
-	$postCreator->createNavBar();
+	$postCreator->createNavBar($user_name);
 	$postCreator->createSideNav();
 	$postCreator->createCommunityNaviagtion($user_name);
 	$postCreator->createGroupWindow($group_id_length);
