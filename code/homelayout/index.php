@@ -52,8 +52,7 @@ if(isset($_SESSION['login_username'])){
 	if(isset($_POST['post_content']))
 	{
 	 $post_content = $_POST['post_content'];
-	 $group_id_tmp = '79vwko88diwwkkgkc4k0';
-	 if(isset($_POST['post_image'])){
+	  if(isset($_POST['post_image'])){
 		$post_image = $_POST['post_image'];
 		$postCreator->addPostToDb($post_content,$post_image,$group_id,$user_name);
 	}else{
@@ -63,9 +62,11 @@ if(isset($_SESSION['login_username'])){
 	}
 	//echo $post_content;
 	} 
-	$postDetails = 	$postCreator->getPostDetails($group_id);
-	foreach($postDetails as $post){
-	$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
+	if(isset($group_id)){
+		$postDetails = 	$postCreator->getPostDetails($group_id);
+		foreach($postDetails as $post){
+		$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
+		}
 	}
 	$postCreator->addScript();
 	$postCreator->addClosure();
