@@ -22,6 +22,22 @@ require $htmlCreator;
 // echo $postCreator->addPostToDb('79vwko88diwwkkgkc4k0',"",'79vwko88diwwkkgkc4k0','vineethrvin@gmail.com');
 
 Class PostCreator{
+   function joinCommunity($user_name, $community_id, $user_type){
+      $com = new Community();
+      $com->joinCommunity($user_name, $community_id, $user_type);
+
+   }
+
+   function updateRole($user_name, $community_id, $user_type){
+      $com = new Community();
+      $com->updateRole($user_name, $community_id, $user_type);
+
+   }
+   function addCommunity($group_id,$group_name,$group_description,$group_type,$created_by){
+      $com = new Community();
+      $com->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
+
+   }
 function addPostToDb($post_content,$post_image,$community_id,$created_by){
    $params = array(':post_content' => $post_content,':community_id' => $community_id,
    ':created_by' => $created_by);
@@ -168,7 +184,7 @@ function createGroupWindow($group_id_length){
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
     <h3>Join a Group</h3>
-		<form action="" method="">
+		<form action="" method="POST">
 			<label>
          Invite Link<span class="req" >*</span>
       </label>

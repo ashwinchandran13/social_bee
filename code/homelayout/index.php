@@ -15,8 +15,7 @@ if(isset($_SESSION['login_username'])){
 	// require $community;
 	require $dbConnection;
 	$postCreator = new PostCreator();
-	// $com = new Community();
-	//TODO: read from the login and use
+	$com = new Community();
 	$group_id_length = 20;
 
 	
@@ -27,14 +26,23 @@ if(isset($_SESSION['login_username'])){
 	$posted_time ="10 hours ago";
 	$posted_by_dp="assets/img/users/4.jpg";
 	$post_image1="assets/img/1.jpg";
+	$USER_TYPE_NORMAL ='NORMAL';
 	//$user_name = 'vineethrvin@gmail.com';
 	$postCreator->addHead();
 	$postCreator->createNavBar($user_name);
 	$postCreator->createSideNav();
+	if(isset($_POST['invite-link']))
+	{
+		$postCreator->joinCommunity($user_name,$_POST['invite-link'],$USER_TYPE_NORMAL);
+	}
 	$postCreator->createCommunityNaviagtion($user_name);
 	$postCreator->createGroupWindow($group_id_length);
-	$postCreator->createPostBox();
-
+	if(isset($_GET['user_type']))
+{
+	if($_GET['user_type'] != $USER_TYPE_NORMAL ){
+		$postCreator->createPostBox();
+	}
+}
 	if(isset($_POST['group_name']))
 	{
 		$group_name = $_POST['group_name'];
@@ -42,7 +50,7 @@ if(isset($_SESSION['login_username'])){
 		$group_type = $_POST['group_type'];
 	$group_id = $_POST['group_id'];
 	$created_by = $user_name;
-		$com->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
+	$postCreator->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
 	
 	} 
 	if(isset($_GET['group_id']))

@@ -4,7 +4,7 @@ function OpenCon()
  {
  $dbhost = "localhost";
  $dbuser = "root";
- $dbpass = "moonga";
+ $dbpass = "root";
  $db = "social_bee";
  try {
  $conn = new PDO("mysql:host=$dbhost;dbname=$db", $dbuser, $dbpass);
@@ -16,6 +16,7 @@ function OpenCon()
  }
  
  function executeQuery($sql,$params=null){
+  try{
     $conn = OpenCon();
     $stmt = $conn->prepare($sql);
     if($params == null){
@@ -23,13 +24,21 @@ function OpenCon()
     }else{
       $stmt->execute($params);
     }
+  }
+  catch(PDOException $e){
+   echo $sql . "<br>" . $e->getMessage();
+   return null;
+  }
+  $conn = null;
 return $stmt->fetchAll();
  }
 
  function executeProcedure($sql,$params){
    try{
      $conn = OpenCon();
+     echo "sql : ".$sql;
      $stmt = $conn->prepare($sql);
+    //  echo "stmt : ".$stmt;
            $stmt->execute($params);
      $conn =null;
    }

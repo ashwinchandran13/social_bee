@@ -8,7 +8,7 @@ namespace HtmlGenerator;
 // require $htmlCreator;
 // require 'db_connection.php';
 // $community = new Community();
-// $community->createCommunityNaviagtion('vineethrvin@gmail.com');
+// $community->updateRole('ashwinchandran@gmail.com','79vwko88diwwkkgkc4k0','COMMUNITY_OWNER');
 
 Class Community{
 
@@ -28,6 +28,17 @@ Class Community{
   
       // return: http://localhost/myproject/
       return $protocol.'://'.$hostName;
+  }
+  function joinCommunity($user_name, $community_id, $user_type){
+    $params = array(':user_name' => $user_name,':community_id' =>$community_id,':user_type' => $user_type );
+      $sql = "INSERT INTO tbl_user_role (user_name,community_id,user_type) VALUES (:user_name,:community_id,:user_type)";
+   executeProcedure($sql,$params);
+  }
+
+  function updateRole($user_name, $community_id, $user_type){
+    $params = array(':user_name' => $user_name,':community_id' =>$community_id,':user_type' => $user_type );
+      $sql = "UPDATE tbl_user_role SET user_type = :user_type WHERE  user_name = :user_name AND community_id = :community_id";
+   executeProcedure($sql,$params);
   }
     function getCommunityId($limit)
     {
@@ -90,7 +101,8 @@ $span_class ="glyphicon glyphicon-user";
 $num_to_display ="21";
 $community_name = $community['community_name'];
 $community_id = $community['community_id'];
-$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id;
+$user_type = $community['user_type'];
+$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id.'&user_type='.$user_type;
 $href=$url;
 
 $this->createListItemForCommunityNav($community_id,$community_name,$nav_ul,$href,$span_class,$num_to_display);
