@@ -73,6 +73,7 @@ if(isset($_SESSION['login_username'])){
 	if(isset($group_id)){
 		$postDetails = 	$postCreator->getPostDetails($group_id);
 		foreach($postDetails as $post){
+			echo '<br> $post[created_by]'.$post['created_by'].' $post[post_content]'.$post['post_content'];
 		$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
 		}
 	}

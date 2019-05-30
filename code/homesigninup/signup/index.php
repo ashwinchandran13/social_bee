@@ -86,8 +86,11 @@ $markup = $includes.'Markup.php';
             </label>
             <input type="password"required autocomplete="off" name="repswd" />
           </div>
-          <button type="submit" class="button button-block"/>Get Started</button>
-          
+          <button type="submit" onclick="myFunction()" class="button button-block"/>Get Started</button>
+          <script>function myFunction() {
+       alert("Hello user, Now please Login!");
+        }
+        </script>
           </form>
 
         </div>
