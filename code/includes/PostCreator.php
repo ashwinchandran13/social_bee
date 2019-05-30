@@ -41,7 +41,6 @@ Class PostCreator{
 function addPostToDb($post_content,$post_image,$community_id,$created_by){
    $params = array(':post_content' => $post_content,':community_id' => $community_id,
    ':created_by' => $created_by);
-echo "post_content: ".$post_content."post_image :".$post_image."community_id: ".$community_id."created_by: ".$created_by;
    $sql = "INSERT INTO tbl_post
             (
              post_type,

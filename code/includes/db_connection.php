@@ -36,7 +36,6 @@ return $stmt->fetchAll();
    try{
      $conn = OpenCon();
      $stmt = $conn->prepare($sql);
-    //  echo "stmt : ".$stmt;
            $stmt->execute($params);
      $conn =null;
    }

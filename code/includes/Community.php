@@ -95,7 +95,6 @@ function createCommunityNaviagtion($user_name){
   $main_nav = HtmlTag::createElement('nav')->set('id','sidebar');
 $nav_ul = $main_nav->addElement('ul')->set('class','dots');
 $community_details = $this->getCommunityDetails($user_name);
-echo("values ".count($community_details));
 foreach($community_details as $community){
 $span_class ="glyphicon glyphicon-user";
 $num_to_display ="21";

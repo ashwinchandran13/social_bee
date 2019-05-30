@@ -31,8 +31,6 @@ if(isset($_POST['login_username']))
    $data = $log -> validate($login_username,$_POST['login_password']);
    if(sizeof($data)>0){
     header($homepage);
-     //echo 'URL: '.$homepage.'<br>';
-    // echo $_SERVER['SERVER_NAME'];
    }
    else{
        echo 'Login failed for user: '.$login_username;
