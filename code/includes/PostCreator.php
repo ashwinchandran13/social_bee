@@ -187,7 +187,7 @@ function createGroupWindow($group_id_length){
 			<label>
          Invite Link<span class="req" >*</span>
       </label>
-			<input type="text"required autocomplete="off" name="invite-link" />
+			<input style="color:white;" type="text"required autocomplete="off" name="invite-link" />
 			<input type="submit" value="Join" name="join-group" class="fsSubmitButton">
 
 		</form>
@@ -238,7 +238,7 @@ function createPostBox(){
            <input style="
            padding: 10px 15px 15px !important;
            font-size: 18px !important;
-           background-image: linear-gradient(to right, #007bff , #110d2d);
+           background-image: linear-gradient(to right, #000000 , #362990);
            font-weight: bold;
            float: right;
            text-shadow: 1px 1px #212529;
@@ -256,7 +256,7 @@ function createPostBox(){
                <input style="padding: 3.3px 15px 15px !important;
                font-size: 18px !important;
                margin-right: 10px;
-               background-image: linear-gradient(to right, #007bff , #110d2d);
+               background-image: linear-gradient(to right, #000000 , #362990);
                font-weight: bold;
                float: right;
                text-shadow: 1px 1px #212529;
@@ -382,7 +382,7 @@ $echo_statement= $echo_statement.'<label style=" padding: 10px 1150px; top: -3px
 								<li class="notification-group">
 									<div class="notification-tab">
 										<!-- <i class="fa fa-flag"></i> -->
-										<h4>Notifications<h4>
+										<h4 style="top: -10px;">Notifications<h4>
 										<span class="label">4</span>
 									</div>
 									<!-- tab -->
