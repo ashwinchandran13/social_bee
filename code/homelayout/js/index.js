@@ -145,6 +145,48 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+// modall js 2 see here
+
+// Get the modal
+var modal1 = document.getElementById('myModal1');
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal 
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+function readURL(input) {
+  if (input.files && input.files[0]) {
+      var reader1 = new FileReader();
+
+      reader1.onload = function (e) {
+          $('#blah')
+              .attr('src', e.target.result)
+              .width(150)
+              .height(200);
+      };
+
+      reader1.readAsDataURL(input.files[0]);
+  }
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 // Ashwin:Calendar js
 
 !function() {

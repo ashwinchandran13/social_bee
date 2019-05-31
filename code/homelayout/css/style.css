@@ -1221,7 +1221,7 @@ textarea::-webkit-scrollbar-thumb {
 /* Modal Content */
 .modal-content {
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid rgb(32, 29, 29);
   width: 80%;
 }
 
@@ -1240,6 +1240,22 @@ textarea::-webkit-scrollbar-thumb {
   text-decoration: none;
   cursor: pointer;
 }
+
+.close1 {
+  color: #fff !important;
+  float: right !important;
+  font-size: 28px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.close1:hover,
+.close1:focus {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /* Ashwin: Group inviite/create css */
 

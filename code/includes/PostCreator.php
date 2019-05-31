@@ -196,14 +196,14 @@ function createGroupWindow($group_id_length){
 		<h3>Create a Group</h3>
 		
 		<form action="" method="post">
-		<label>
+		<label >
 				Group Id<span class="req" >*</span>
 			</label>
-			<input type="text"required autocomplete="off" name="group_id" value="'.$group_id.'" readonly/>
+			<input style="color:white;" type="text"required autocomplete="off" name="group_id" value="'.$group_id.'" readonly/>
 			<label>
 				Group Name<span class="req" >*</span>
 			</label>
-			<input type="text"required autocomplete="off" name="group_name" />
+			<input style="color:white;" type="text"required autocomplete="off" name="group_name" />
 			<label>
 				Group Type<span class="req" >*</span>
 			</label>
@@ -216,7 +216,7 @@ function createGroupWindow($group_id_length){
 				Group Description<span class="req" >*</span>
 			</label>
 			<br><br>
-		<textarea placeholder="Enter Description" name="group_description"></textarea>
+		<textarea style="color:white;" placeholder="Enter Description" name="group_description"></textarea>
 		<input type="submit" value="Submit" name="btn_create_group" class="fsSubmitButton">
 
 		</form>
@@ -312,13 +312,13 @@ function createSideNav(){
          </li>
          
          <li>
-            <a href="#"><i class="fa fa-fw fa-bank"></i> Community Calender</a>
+            <a href="../htmls/index.html"><i class="fa fa-fw fa-bank"></i> Community Calender</a>
          </li>
          <li>
             <a href="#"><i class="fa fa-fw fa-dropbox"></i> Community Albums</a>
          </li>
          <li>
-            <a href="#"><i class="fa fa-fw fa-twitter"></i> About Community</a>
+         <button id="myBtn1" style="color:white; background:#1a1a1a; border:none; font-size: 1rem; padding: 10px 15px 10px 30px; " ><i class="fa fa-fw fa-twitter"></i> About Community</button>
          </li>
       </ul>
    </nav>
@@ -330,7 +330,20 @@ function createSideNav(){
          <span class="hamb-top"></span>
          <span class="hamb-middle"></span>
          <span class="hamb-bottom"></span>
-      </button>';
+      </button>
+      <!-- The Modal -->
+      <div id="myModal1" class="modal">
+      
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close1">&times;</span>
+          /*see here*/
+      
+        </div>
+      
+      </div>
+      '
+      ;
 } 
 function createNavBar($user_name){
    
