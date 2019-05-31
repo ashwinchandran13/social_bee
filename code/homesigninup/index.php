@@ -37,7 +37,7 @@ session_destroy();
 		<div class="p1content">
 		<h1>Create your own <span class="colanim"><br>social network !</span></h1><br><h3>OR</h3><br>
 		<br><h4>Join A Community</h4>
-		<a href="signup/index.html#login" class="btn1 btnfull">Login</a>
+		<a href="signup/index.php" class="btn1 btnfull">Login</a>
 		<a href="#" class="btn1 btnf">Learn More</a>
 	</div>
 	</header>

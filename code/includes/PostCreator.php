@@ -286,8 +286,9 @@ function createSideNav($group_name=null,$group_description=null){
       <ul class="nav sidebar-nav">
          <li class="sidebar-brand">
             <a href="#">
-               Community Name
+               COMMUNITY<b>
                '.$group_name.'
+               </b>
 
             </a>
          </li>
@@ -303,7 +304,7 @@ function createSideNav($group_name=null,$group_description=null){
          <li>
             <a href="#"><i class="fa fa-fw fa-cog"></i> Managers</a>
          </li>
-         <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>Dropdown</li>
+         <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>MEMBER LIST</li>
             <ul class="dropdown-menu" role="menu">
                <li style="color: rgba(137, 142, 146, 0.6);padding-left:30px;" class="dropdown-header" >MEMBERS</li>
                <li><a href="#">Member1</a></li>
@@ -338,8 +339,11 @@ function createSideNav($group_name=null,$group_description=null){
       <div id="myModal1" class="modal">
       
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="color:white">
           <span class="close1">&times;</span>
+          <h3 style="align:center;"><i>ABOUT '.$group_name.'</i></h3>
+          
+
           <p>
           '.$group_description.'
           </p>
