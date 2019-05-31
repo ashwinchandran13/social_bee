@@ -307,6 +307,8 @@ function createSideNav($group_name=null,$group_description=null){
          <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>MEMBER LIST</li>
             <ul class="dropdown-menu" role="menu">
                <li style="color: rgba(137, 142, 146, 0.6);padding-left:30px;" class="dropdown-header" >MEMBERS</li>
+       
+
                <li><a href="#">Member1</a></li>
                <li><a href="#">Member1</a></li>
                <li><a href="#">Member1</a></li>
@@ -382,7 +384,7 @@ $echo_statement= $echo_statement.'<label style=" padding: 10px 1150px; top: -3px
 								<li class="notification-group">
 									<div class="notification-tab">
 										<!-- <i class="fa fa-flag"></i> -->
-										<h4 style="top: -10px;">Notifications<h4>
+										<h4>Notifications<h4>
 										<span class="label">4</span>
 									</div>
 									<!-- tab -->
