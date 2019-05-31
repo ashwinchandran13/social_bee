@@ -34,7 +34,13 @@ if(isset($_SESSION['login_username'])){
 	}
 	$postCreator->addHead();
 	$postCreator->createNavBar($user_name,$_GET['group_name']);
-	$postCreator->createSideNav();
+	if(isset($group_id)){
+		
+	$postCreator->createSideNav($_GET['group_name'],$_GET['group_description']);
+	}else{
+		$postCreator->createSideNav();
+
+	}
 	
 	if(isset($_POST['invite-link']))
 	{
@@ -81,7 +87,6 @@ if(isset($_SESSION['login_username'])){
 	if(isset($group_id)){
 		$postDetails = 	$postCreator->getPostDetails($group_id);
 		foreach($postDetails as $post){
-			echo '<br> $post[created_by]'.$post['created_by'].' $post[post_content]'.$post['post_content'];
 		$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
 		}
 	}

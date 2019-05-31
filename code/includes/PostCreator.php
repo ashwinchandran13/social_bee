@@ -276,7 +276,8 @@ function createPostBox(){
             </form>
    </div>';
 }
-function createSideNav(){
+function createSideNav($group_name=null,$group_description=null){
+   
    echo '<div id="wrapper">
    <!-- <div class="overlay"></div> -->
 
@@ -286,6 +287,8 @@ function createSideNav(){
          <li class="sidebar-brand">
             <a href="#">
                Community Name
+               '.$group_name.'
+
             </a>
          </li>
          <li>
@@ -337,7 +340,9 @@ function createSideNav(){
         <!-- Modal content -->
         <div class="modal-content">
           <span class="close1">&times;</span>
-          /*see here*/
+          <p>
+          '.$group_description.'
+          </p>
       
         </div>
       

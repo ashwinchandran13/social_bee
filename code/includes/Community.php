@@ -61,7 +61,7 @@ Class Community{
 function getCommunityDetails($user_name){
   $params = array(':user_name' => $user_name);
 
-      $sql = "SELECT  com.community_id, com.community_name, com.community_type, com.created_time, role.user_type
+      $sql = "SELECT  com.community_id, com.community_name, com.community_type, com.created_time,com.community_description, role.user_type
       FROM tbl_community com, tbl_user_role role
       WHERE role.user_name=:user_name AND
       role.community_id = com.community_id";
@@ -101,7 +101,8 @@ $num_to_display ="21";
 $community_name = $community['community_name'];
 $community_id = $community['community_id'];
 $user_type = $community['user_type'];
-$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id.'&user_type='.$user_type.'&group_name='.$community_name;
+$community_description = $community['community_description'];
+$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id.'&user_type='.$user_type.'&group_name='.$community_name.'&group_description='.$community_description;
 $href=$url;
 
 $this->createListItemForCommunityNav($community_id,$community_name,$nav_ul,$href,$span_class,$num_to_display);
