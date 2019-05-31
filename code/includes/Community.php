@@ -101,7 +101,7 @@ $num_to_display ="21";
 $community_name = $community['community_name'];
 $community_id = $community['community_id'];
 $user_type = $community['user_type'];
-$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id.'&user_type='.$user_type;
+$url = $this->getBaseUrl().'/social_bee/code/homelayout/index.php?group_id='.$community_id.'&user_type='.$user_type.'&group_name='.$community_name;
 $href=$url;
 
 $this->createListItemForCommunityNav($community_id,$community_name,$nav_ul,$href,$span_class,$num_to_display);

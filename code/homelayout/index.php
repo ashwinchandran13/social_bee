@@ -28,14 +28,25 @@ if(isset($_SESSION['login_username'])){
 	$post_image1="assets/img/1.jpg";
 	$USER_TYPE_NORMAL ='NORMAL';
 	//$user_name = 'vineethrvin@gmail.com';
+	if(isset($_GET['group_id']))
+	{
+		$group_id = $_GET['group_id'];
+	}
 	$postCreator->addHead();
-	$postCreator->createNavBar($user_name);
+	$postCreator->createNavBar($user_name,$_GET['group_name']);
 	$postCreator->createSideNav();
+	
 	if(isset($_POST['invite-link']))
 	{
 		$postCreator->joinCommunity($user_name,$_POST['invite-link'],$USER_TYPE_NORMAL);
 	}
+	if(isset($group_id)){
+
 	$postCreator->createCommunityNaviagtion($user_name);
+	}else{
+		$postCreator->createCommunityNaviagtion($user_name);
+	
+	}
 	$postCreator->createGroupWindow($group_id_length);
 	if(isset($_GET['user_type']))
 {
@@ -53,10 +64,7 @@ if(isset($_SESSION['login_username'])){
 	$postCreator->addCommunity($group_id,$group_name,$group_description,$group_type,$created_by);
 	
 	} 
-	if(isset($_GET['group_id']))
-	{
-		$group_id = $_GET['group_id'];
-	}
+	
 	if(isset($_POST['post_content']))
 	{
 	 $post_content = $_POST['post_content'];

@@ -345,12 +345,14 @@ function createSideNav(){
       '
       ;
 } 
-function createNavBar($user_name){
-   
-   echo '<body><div class="navbar-fixed">
+function createNavBar($user_name,$group_name=null){
+   $echo_statement='<body><div class="navbar-fixed">
       
-      <nav>
-      <label style=" padding: 10px 1150px; top: -3px; position: absolute; " >Welcome <b style="color:white">'.$user_name.'</b><b style="color:yellow">!</b></label>
+   <nav>';
+if(isset($group_name)){
+   $echo_statement =  $echo_statement.'<label style=" padding: 10px 100px; top: -3px; position: absolute; " >Group Name <br><b style="color:white">'.$group_name.'</b></label>';
+}
+$echo_statement= $echo_statement.'<label style=" padding: 10px 1150px; top: -3px; position: absolute; " >Welcome <b style="color:white">'.$user_name.'</b><b style="color:yellow">!</b></label>
          <div class="nav-wrapper">
 				<form action="" method="post">
 					<div class="input-field">
@@ -423,7 +425,8 @@ function createNavBar($user_name){
 
 			</div>
 		</nav>
-	</div>';
+   </div>';
+   echo $echo_statement;
 }
 function showCalendar(){
    echo '
