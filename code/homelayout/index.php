@@ -33,11 +33,12 @@ if(isset($_SESSION['login_username'])){
 		$group_id = $_GET['group_id'];
 	}
 	$postCreator->addHead();
-	$postCreator->createNavBar($user_name,$_GET['group_name']);
 	if(isset($group_id)){
-		
+	$postCreator->createNavBar($user_name,$_GET['group_name']);
 	$postCreator->createSideNav($_GET['group_name'],$_GET['group_description']);
 	}else{
+				$postCreator->createNavBar($user_name);
+
 		$postCreator->createSideNav();
 
 	}
