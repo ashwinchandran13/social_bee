@@ -1,7 +1,10 @@
 <?php
+session_start();
 if(isset($_SESSION['login_username'])){
+	echo '<br>'.$_SESSION['login_username'];
 session_destroy();
 }
+// echo '<br>.data';
 ?>
 <!DOCTYPE html>
 <html>
