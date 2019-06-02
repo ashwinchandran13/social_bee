@@ -190,7 +190,7 @@ function createGroupWindow($group_id_length){
 			<label>
          Invite Link<span class="req" >*</span>
       </label>
-			<input type="text"required autocomplete="off" name="invite-link" />
+			<input style="color:white;" type="text"required autocomplete="off" name="invite-link" />
 			<input type="submit" value="Join" name="join-group" class="fsSubmitButton">
 
 		</form>
@@ -241,7 +241,7 @@ function createPostBox(){
            <input style="
            padding: 10px 15px 15px !important;
            font-size: 18px !important;
-           background-image: linear-gradient(to right, #007bff , #110d2d);
+           background-image: linear-gradient(to right, #000000 , #362990);
            font-weight: bold;
            float: right;
            text-shadow: 1px 1px #212529;
@@ -259,7 +259,7 @@ function createPostBox(){
                <input style="padding: 3.3px 15px 15px !important;
                font-size: 18px !important;
                margin-right: 10px;
-               background-image: linear-gradient(to right, #007bff , #110d2d);
+               background-image: linear-gradient(to right, #000000 , #362990);
                font-weight: bold;
                float: right;
                text-shadow: 1px 1px #212529;
@@ -289,8 +289,9 @@ function createSideNav($group_name=null,$group_description=null){
       <ul class="nav sidebar-nav">
          <li class="sidebar-brand">
             <a href="#">
-               Community Name
+               COMMUNITY<b>
                '.$group_name.'
+               </b>
 
             </a>
          </li>
@@ -306,9 +307,11 @@ function createSideNav($group_name=null,$group_description=null){
          <li>
             <a href="#"><i class="fa fa-fw fa-cog"></i> Managers</a>
          </li>
-         <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>Dropdown</li>
+         <li style="color:white;padding-left:30px; padding-top:10px; padding-bottom:10px;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>MEMBER LIST</li>
             <ul class="dropdown-menu" role="menu">
                <li style="color: rgba(137, 142, 146, 0.6);padding-left:30px;" class="dropdown-header" >MEMBERS</li>
+       
+
                <li><a href="#">Member1</a></li>
                <li><a href="#">Member1</a></li>
                <li><a href="#">Member1</a></li>
@@ -341,8 +344,11 @@ function createSideNav($group_name=null,$group_description=null){
       <div id="myModal1" class="modal">
       
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="color:white">
           <span class="close1">&times;</span>
+          <h3 style="align:center;"><i>ABOUT '.$group_name.'</i></h3>
+          
+
           <p>
           '.$group_description.'
           </p>

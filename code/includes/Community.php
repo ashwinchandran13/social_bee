@@ -67,6 +67,13 @@ function getCommunityDetails($user_name){
       role.community_id = com.community_id";
   return executeQuery($sql,$params);
 }
+function getCommunityMembers($group_id){
+  $params = array(':group_id' => $group_id);
+
+      $sql = "SELECT user_name FROM tbl_user_role WHERE community_id = :group_id ";
+  return executeQuery($sql,$params);
+}
+
     function getCommunityType(){
       $sql = "SELECT `community_type_name` FROM tbl_community_type";
   return executeQuery($sql);
