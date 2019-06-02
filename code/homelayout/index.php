@@ -74,12 +74,17 @@ if(isset($_SESSION['login_username'])){
 	
 	if(isset($_POST['post_content']))
 	{
+		
+
 	 $post_content = $_POST['post_content'];
-	  if(isset($_POST['post_image'])){
-		$post_image = $_POST['post_image'];
-		$postCreator->addPostToDb($post_content,$post_image,$group_id,$user_name);
+	  if(isset($_FILES["post_image"]["name"])){
+		$ext = findexts($_FILES["post_image"]["name"]);
+		$new_image_name = uniqid("IMG_",false);
+		$final_name = $new_image_name.".".$ext;
+		$filepath = "post_images/".$final_name;
+		move_uploaded_file($_FILES["post_image"]["tmp_name"], $filepath);
+		$postCreator->addPostToDb($post_content,$filepath,$group_id,$user_name);
 	}else{
-		$postCreator->createPost($menuItems,$posted_by,$posted_location,$posted_time,$posted_by_dp,$post_content);
 		$postCreator->addPostToDb($post_content,null,$group_id,$posted_by);
 
 	}
@@ -88,7 +93,7 @@ if(isset($_SESSION['login_username'])){
 	if(isset($group_id)){
 		$postDetails = 	$postCreator->getPostDetails($group_id);
 		foreach($postDetails as $post){
-		$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post_image1);
+		$postCreator->createPost($menuItems,$post['created_by'],$posted_location,$posted_time,$posted_by_dp,$post['post_content'],$post['post_image']);
 		}
 	}
 	$postCreator->addScript();
@@ -100,4 +105,11 @@ if(isset($_SESSION['login_username'])){
 function logout(){
 	session_destroy();
 }
+
+function findexts ($filename)  {  
+	$filename = strtolower($filename) ;  
+	$exts = preg_split("[/\\.]", $filename) ;  
+	$n = count($exts)-1;  
+	$exts = $exts[$n];  return $exts;  
+ }   
 ?>

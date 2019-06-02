@@ -39,18 +39,21 @@ Class PostCreator{
 
    }
 function addPostToDb($post_content,$post_image,$community_id,$created_by){
+   
    $params = array(':post_content' => $post_content,':community_id' => $community_id,
-   ':created_by' => $created_by);
+   ':created_by' => $created_by,':post_image' => $post_image);
    $sql = "INSERT INTO tbl_post
             (
              post_type,
              post_content,
              community_id,
-             created_by)
+             created_by,
+             post_image)
 VALUES ('TEXT',
         :post_content,
         :community_id,
-        :created_by)";
+        :created_by,
+        :post_image)";
         executeProcedure($sql,$params);
 }
 /**DB interaction code */
@@ -231,7 +234,7 @@ function createGroupWindow($group_id_length){
 
 function createPostBox(){
    echo '<div class="post_box">
-   <form action = "" method="post">
+   <form action = "" enctype="multipart/form-data" method="post">
          <div class="p-box">
            <img src="http://placehold.it/100/100"/>
            <textarea placeholder="What\'s in your mind" name="post_content"></textarea>
